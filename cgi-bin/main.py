@@ -1,4 +1,4 @@
-#!/usr/local/anaconda3/bin/python
+#!/usr/bin/python
 
 import cgi
 import cgitb
