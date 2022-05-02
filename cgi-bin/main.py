@@ -1,5 +1,10 @@
 #!/usr/local/anaconda3/bin/python
 
-print("Content-Type: text/plai\n")
+import cgi
+import cgitb
+
+cgitb.enable()
+
+print("Content-Type: text/plain\n")
 
 print("Hello Unko")
