@@ -17,7 +17,7 @@ def get_page(image, feature):
     
             <div class="columns">
                 <div class="column">
-                    <form action="../index.cgi" method="post">
+                    <form action="index.cgi" method="post">
                         <input type="text" class="input" name="image"> 
                         値を入力してください
                         <input type="submit" class="button is-primary" name="submit" value="送信">
