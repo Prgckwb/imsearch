@@ -66,7 +66,10 @@ def get_page(image, feature):
                 
                     <!-- 画像のテーブル-->
                     <div class="image-tables column">
-                        {images_area}
+                        <p class="title is-4">Similar Images</p>
+                        <table class="table is-bordered">
+                            {images_area}
+                        </table>
                     </div>
             </div>
         </div>
