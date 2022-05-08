@@ -12,12 +12,16 @@ def get_page(image, feature):
     <section class="section">
         <div class="container">
             <p class="title is-2 has-text-centered">
-                Image Search by {feature} with Histogram Intersection
+                Image Search by {feature} with Histogram Intersection {image}
             </p>
     
             <div class="columns">
                 <div class="column">
-    
+                    <form action="/index.cgi" method="post">
+                        <input type="text" class="input" name="image"> 
+                        値を入力してください
+                        <input type="submit" class="button is-primary" name="submit" value="送信">
+                    </form>
                 </div>        
             </div>
         </div>
