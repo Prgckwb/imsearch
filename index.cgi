@@ -1,4 +1,5 @@
-#! /usr/local/anaconda3/bin/python3
+#!　/usr/local/anaconda3/bin/python3
+
 
 import cgi
 import cgitb
@@ -27,5 +28,4 @@ else:
 # ページの出力
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
-print("hoge")
 print(get_page(image, feature))
