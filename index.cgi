@@ -1,10 +1,9 @@
 #! /usr/local/anaconda3/bin/python3
 
-from jinja2 import Environment, FileSystemLoader
 import cgi
 import cgitb
 
-from template.main_page import get_page
+# from template.main_page import get_page
 
 cgitb.enable(display=0, logdir="./log")
 
@@ -28,4 +27,5 @@ else:
 # ページの出力
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
-print(get_page(image, feature))
+print("hoge")
+# print(get_page(image, feature))
