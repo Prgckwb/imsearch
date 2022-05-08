@@ -1,5 +1,10 @@
 #! /usr/local/anaconda3/bin/python3
 
-print("Content-Type: text/plain\n")
+from jinja2 import Environment, FileSystemLoader
 
-print('Hello, World!')
+env = Environment(loader=FileSystemLoader('./', encoding='utf-8'))
+tpl = env.get_template('template/index.html')
+
+print('Content-Type: text/html\n')
+print(tpl.render())
+
