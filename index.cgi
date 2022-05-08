@@ -35,6 +35,7 @@ html_text = f'''
     </div>
 </section>
 </body>
-{a}
 </html>
 '''
+
+print(html_text)
