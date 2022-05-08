@@ -5,9 +5,12 @@ import cgi
 import cgitb
 
 cgitb.enable(display=0, logdir="./log")
-HEADER = 'Content-Type: text/html\n'
 
-print(HEADER)
+
+def make_page(html):
+    print('Content-Type: text/html\n')
+    print(html)
+
 
 a = "hogehoge"
 
@@ -24,7 +27,7 @@ html_text = f'''
 <section class="section">
     <div class="container">
         <p class="title is-2 has-text-centered">
-            Image Search by RGB Histgram with Histgram Intersection
+            Image Search by RGB Histgram with Histgram Intersection {a}
         </p>
         
         <div class="columns">
@@ -38,4 +41,4 @@ html_text = f'''
 </html>
 '''
 
-print(html_text)
+make_page(html_text)
