@@ -11,7 +11,7 @@ HEADER = '''
 
 
 def get_page(image, feature):
-    images = glob.glob("static/images/ramen/*.jpg")
+    images = [img[1] for img in glob.glob("static/images/ramen/*.jpg")]
 
     images_area = ""
     for img in images:
