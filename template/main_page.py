@@ -22,11 +22,24 @@ def get_page(image, feature):
     
             <div class="columns">
                 <div class="column">
-                    <form action="" method="post">
-                        <input type="text" class="input" name="image"> 
-                        値を入力してください
-                        <input type="submit" class="button is-primary" name="submit" value="送信">
-                    </form>
+                    <div class="block">
+                        <p class="title is-4">Query Image</p>
+                        <img src="{image}" alt="">
+                    </div>
+                    
+                    <!-- 特徴量切り替え -->
+                    <div class="feature-options menu">
+                        <p class="title is-4">Feature Options</p>
+                        
+                        <div class="intersec-option">
+                            <p class="menu-label">Intersection</p>
+                            <ul class="menu-list">
+                                <li><a href="?image={image}&feature=0">RGB Color Histogram 1×1</a></li>
+                                <li><a href="?image={image}&feature=1">RGB Color Histogram 2×2</a></li>
+                                <li><a href="?image={image}&feature=2">RGB Color Histogram 3×3</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>        
             </div>
         </div>
