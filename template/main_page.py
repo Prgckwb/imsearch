@@ -14,14 +14,14 @@ def get_page(image, feature):
     images = glob.glob("static/images/ramen/*.jpg")
 
     images_area = ""
-    for img in images:
-        images_area += f'''
-        <td>
-            <a href="/?image={img}&feature={feature}">
-                <img src="img" alt="">
-            </a>
-        </td>
-        '''
+    # for img in images:
+    #     images_area += f'''
+    #     <td>
+    #         <a href="/?image={img}&feature={feature}">
+    #             <img src="img" alt="">
+    #         </a>
+    #     </td>
+    #     '''
 
     html_text = f'''
     <!DOCTYPE html>
@@ -64,13 +64,13 @@ def get_page(image, feature):
                     </div>
                 </div> 
                 
-                    <!-- 画像のテーブル-->
-                    <div class="image-tables column">
-                        <p class="title is-4">Similar Images</p>
-                        <table class="table is-bordered">
-                            {images_area}
-                        </table>
-                    </div>
+                <!-- 画像のテーブル-->
+                <div class="image-tables column">
+                    <p class="title is-4">Similar Images</p>
+                    <table class="table is-bordered">
+                        {images_area}
+                    </table>
+                </div>
             </div>
         </div>
     </section>
