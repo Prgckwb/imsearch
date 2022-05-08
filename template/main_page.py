@@ -1,3 +1,5 @@
+import glob
+
 HEADER = '''
 <head>
     <meta charset="UTF-8">
@@ -9,6 +11,18 @@ HEADER = '''
 
 
 def get_page(image, feature):
+    images = glob.glob("static/images/ramen/*.jpg")
+
+    images_area = ""
+    for img in images:
+        images_area += f'''
+        <td>
+            <a href="/?image={img}&feature={feature}">
+                <img src="img" alt="">
+            </a>
+        </td>
+        '''
+
     html_text = f'''
     <!DOCTYPE html>
     <html lang="ja">
@@ -34,13 +48,26 @@ def get_page(image, feature):
                         <div class="intersec-option">
                             <p class="menu-label">Intersection</p>
                             <ul class="menu-list">
-                                <li><a href="?image={image}&feature=0">RGB Color Histogram 1×1</a></li>
-                                <li><a href="?image={image}&feature=1">RGB Color Histogram 2×2</a></li>
-                                <li><a href="?image={image}&feature=2">RGB Color Histogram 3×3</a></li>
+                                <li><a href="?image={image}&feature=rgb1i">RGB Color Histogram 1×1</a></li>
+                                <li><a href="?image={image}&feature=rgb2i">RGB Color Histogram 2×2</a></li>
+                                <li><a href="?image={image}&feature=rgb3i">RGB Color Histogram 3×3</a></li>
+                                
+                                <li><a href="?image={image}&feature=hsv1i">HSV Color Histogram 1×1</a></li>
+                                <li><a href="?image={image}&feature=hsv2i">HSV Color Histogram 2×2</a></li>
+                                <li><a href="?image={image}&feature=hsv3i">HSV Color Histogram 3×3</a></li>
+                                
+                                <li><a href="?image={image}&feature=luv1i">LUV Color Histogram 1×1</a></li>
+                                <li><a href="?image={image}&feature=luv2i">LUV Color Histogram 2×2</a></li>
+                                <li><a href="?image={image}&feature=luv3i">LUV Color Histogram 3×3</a></li>
                             </ul>
                         </div>
                     </div>
-                </div>        
+                </div> 
+                
+                    <!-- 画像のテーブル-->
+                    <div class="image-tables column">
+                        {images_area}
+                    </div>
             </div>
         </div>
     </section>
