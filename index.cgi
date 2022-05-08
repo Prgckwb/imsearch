@@ -3,7 +3,7 @@
 import cgi
 import cgitb
 
-# from template.main_page import get_page
+from template.main_page import get_page
 
 cgitb.enable(display=0, logdir="./log")
 
@@ -28,4 +28,4 @@ else:
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
 print("hoge")
-# print(get_page(image, feature))
+print(get_page(image, feature))
