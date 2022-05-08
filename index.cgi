@@ -4,14 +4,19 @@ from jinja2 import Environment, FileSystemLoader
 import cgi
 import cgitb
 
-from template.main_page import get_html_text
+from template.main_page import get_page
 
 cgitb.enable(display=0, logdir="./log")
 
+form = cgi.FieldStorage()
 
-def make_page(html):
-    print('Content-Type: text/html\n')
-    print(html)
+image = ""
+feature = "Unko"
 
+if "image" in form:
+    image = form["image"].value
+if "feature" in form:
+    feature = form["feature"].value
 
-make_page(get_html_text("Unko"))
+print('Content-Type: text/html\n')
+print(get_page(image, feature))

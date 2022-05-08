@@ -1,4 +1,4 @@
-def get_html_text(a):
+def get_page(image, feature):
     html_text = f'''
     <!DOCTYPE html>
     <html lang="ja">
@@ -12,7 +12,7 @@ def get_html_text(a):
     <section class="section">
         <div class="container">
             <p class="title is-2 has-text-centered">
-                Image Search by RGB Histgram with Histgram Intersection {a}
+                Image Search by {feature} with Histogram Intersection
             </p>
     
             <div class="columns">
