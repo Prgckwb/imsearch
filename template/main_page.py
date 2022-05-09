@@ -94,7 +94,7 @@ def create_images_table(image, feature, images_list):
                        <img src="{images_list[table_w * i + j]}" alt="hoge" 
                        style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                    </a><br>
-                   <p>[{table_w*i+j}]0.0000</p>
+                   <p class="is-text has-text-centered">[{table_w*i+j}] 0.0000</p>
                </td>
            '''
 
