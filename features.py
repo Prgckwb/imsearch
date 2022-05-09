@@ -8,6 +8,7 @@ IMAGE_DIR = "static/images/ramen"
 images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
 
 
+# RGBヒストグラムによる特徴量抽出を行う
 def rgb_hist(img_path):
     img = cv2.imread(img_path)
     b, g, r = img[..., 0], img[..., 1], img[..., 2]
@@ -20,7 +21,8 @@ def rgb_hist(img_path):
     hist = np.array([hist_r, hist_g, hist_b])
     return hist
 
-#
+
+# 特徴抽出methodを定義して全画像リストに対して特徴抽出
 def write_alldata(images_list, method, filename, data_dir="static/data"):
     all_data = []
 
@@ -34,5 +36,5 @@ def write_alldata(images_list, method, filename, data_dir="static/data"):
 
 if __name__ == '__main__':
     write_alldata(images_list, rgb_hist, "sample")
-    d = np.load("static/data/sample.npy")
+    d = np.load("static/data/RGB1.npy")
     print(d.shape)
