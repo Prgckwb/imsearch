@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 
 def rgb_hist(img_path):
@@ -15,8 +16,11 @@ def rgb_hist(img_path):
     return hist
 
 
+def write_feature_data(data, file_name, data_dir="static/data"):
+    np.save(f"{data_dir}/{file_name}", data)
+
+
 if __name__ == '__main__':
     img_path = "static/images/ramen/2192.jpg"
     h = rgb_hist(img_path)
-    print(h[0])
-    print(h[0].sum())
+    write_feature_data(h, "sample")
