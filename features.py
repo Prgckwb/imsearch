@@ -1,5 +1,10 @@
+import glob
+
 import cv2
 import numpy as np
+
+IMAGE_DIR = "static/images/ramen"
+images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
 
 
 def rgb_hist(img_path):
@@ -21,6 +26,6 @@ def write_feature_data(data, file_name, data_dir="static/data"):
 
 
 if __name__ == '__main__':
-    img_path = "static/images/ramen/2192.jpg"
-    h = rgb_hist(img_path)
-    write_feature_data(h, "sample")
+    h = rgb_hist(images_list[0])
+    print(h)
+    # write_feature_data(h, "sample")

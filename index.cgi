@@ -10,7 +10,7 @@ from template.main_page import get_page
 form = cgi.FieldStorage()
 
 IMAGE_DIR = "static/images/ramen"
-images_list = [img for img in glob.glob(f"{IMAGE_DIR}/*.jpg")]
+images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
 
 query_index = "0"
 feature = "0"
