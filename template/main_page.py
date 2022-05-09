@@ -29,7 +29,7 @@ def get_page(query_index, feature, images_list):
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
-                        <img src="{images_list[int(query_index)]}" alt=""
+                        <img src="{images_list[int(query_index)].path}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
                     </div>
 
@@ -86,15 +86,18 @@ def create_images_table(feature, images_list):
         images_table += "<tr>"
 
         for j in range(table_w):
+            n = table_w * i + j
             # 画像テーブルの列に対して画像をtable_wの数 作成
             # language=HTML
             images_table += f'''
                <td>
                    <a href="./?i={table_w * i + j}&f={feature}">
-                       <img src="{images_list[table_w * i + j]}" alt="hoge" 
+                       <img src="{images_list[n].path}" alt="hoge" 
                        style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                    </a><br>
-                   <p class="is-text has-text-centered">[{table_w * i + j}] 0.0000</p>
+                   <p class="is-text has-text-centered">
+                        [{images_list[n].index}] {images_list[n].similarity:.4f}
+                   </p>
                </td>
            '''
 

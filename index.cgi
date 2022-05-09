@@ -9,12 +9,33 @@ import numpy as np
 
 from template.main_page import get_page
 import features as f
+from dataclasses import dataclass
+
+
+@dataclass
+class Image:
+    path: str
+    index: str
+    similarity: float = 0
+
+    def __lt__(self, other):
+        return self.index < other.index
 
 
 form = cgi.FieldStorage()
-
 IMAGE_DIR = "static/images/ramen"
-images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
+
+
+def init_images():
+    imgs_list = []
+    path_list = sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))
+    for i in range(len(path_list)):
+        image = Image(path_list[i], str(i))
+        imgs_list.append(image)
+    return imgs_list
+
+
+images_list = init_images()
 
 query_index = "0"
 feature = "0"
@@ -29,17 +50,16 @@ if "f" in form:
 similarity = None
 
 if feature == "0":
-    similarity = []
-
     data = np.load("static/data/RGB1.npy")
-    for i in range(len(images_list)):
-#         sim_r = cv2.compareHist(data[query_index][0], data[i][0], cv2.HISTCMP_CORREL)
-#         sim_g = cv2.compareHist(data[query_index][1], data[i][1], cv2.HISTCMP_CORREL)
-#         sim_b = cv2.compareHist(data[query_index][2], data[i][2], cv2.HISTCMP_CORREL)
-#         sim = (sim_r + sim_g + sim_b) / 3.0
-        sim = 1
-        similarity.append(sim)
+    similarity = f.compare_hist(data, 0, images_list)
 
+
+zip_list = zip(similarity, images_list)
+zip_sort = sorted(zip_list, reverse=True)
+similarity, images_list = zip(*zip_sort)
+
+for i in range(len(images_list)):
+    images_list[i].similarity = similarity[i]
 
 
 # ページの出力
