@@ -10,20 +10,18 @@ from template.main_page import get_page
 form = cgi.FieldStorage()
 
 IMAGE_DIR = "static/images/ramen"
-images_list = [img for img in glob.glob("static/images/ramen/*.jpg")]
+images_list = [img for img in glob.glob(f"{IMAGE_DIR}/*.jpg")]
 
-image = ""
-feature = "Unko"
+image = "0"
+feature = "0"
 
 # クエリ画像と特徴量メソッドの取得・定義
 if "i" in form:
     image = form["i"].value
-else:
-    image = "0"
+
 if "f" in form:
     feature = form["f"].value
-else:
-    feature = "0"
+
 
 # ページの出力
 # ヘッダーには文末に改行が必要
