@@ -19,7 +19,7 @@ feature = "Unko"
 if "i" in form:
     image = form["i"].value
 else:
-    image = IMAGE_DIR + "/2192.jpg"
+    image = "0"
 if "f" in form:
     feature = form["f"].value
 else:
