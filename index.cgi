@@ -14,7 +14,7 @@ from template.main_page import get_page
 @dataclass
 class Image:
     path: str
-    index: str
+    index: int
     similarity: float = 0
 
     def __lt__(self, other):
