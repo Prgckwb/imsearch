@@ -111,7 +111,7 @@ def create_feature_options(image):
         <div class="intersec-option">
             <p class="menu-label">Intersection</p>
             <ul class="menu-list">
-                <li><a href="?i={image}&f=0">RGB Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=0" class="is-active">RGB Color Histogram 1×1</a></li>
                 <li><a href="?i={image}&f=1">RGB Color Histogram 2×2</a></li>
                 <li><a href="?i={image}&f=2">RGB Color Histogram 3×3</a></li>
 
