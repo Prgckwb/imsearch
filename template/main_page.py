@@ -86,13 +86,16 @@ def create_images_table(image, feature, images_list):
         images_table += "<tr>"
 
         for j in range(table_w):
-            # 画像テーブルの列に対して画像をtable_wの分作成
+            # 画像テーブルの列に対して画像をtable_wの数 作成
             # language=HTML
             images_table += f'''
-               <td><a href="./?i={table_w * i + j}&f={feature}">
-                   <img src="{images_list[table_w * i + j]}" alt="hoge" 
-                   style="width: {image_w}px; height:{image_h}px; object-fit: cover">
-               </a></td>
+               <td>
+                   <a href="./?i={table_w * i + j}&f={feature}">
+                       <img src="{images_list[table_w * i + j]}" alt="hoge" 
+                       style="width: {image_w}px; height:{image_h}px; object-fit: cover">
+                   </a><br>
+                   <p>[{table_w*i+j}]0.0000</p>
+               </td>
            '''
 
         # language=HTML
