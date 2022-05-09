@@ -35,6 +35,6 @@ def write_alldata(images_list, method, filename, data_dir="static/data"):
 
 
 if __name__ == '__main__':
-    write_alldata(images_list, rgb_hist, "sample")
-    d = np.load("static/data/RGB1.npy")
-    print(d.shape)
+    write_alldata(images_list, rgb_hist, "RGB1")
+    # d = np.load("static/data/RGB1.npy")
+    # print(d.shape)
