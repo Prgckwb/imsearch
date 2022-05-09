@@ -27,16 +27,16 @@ if "f" in form:
     feature = form["f"].value
 
 similarity = None
-if f == "0":
-    similarity = []
-
-    data = np.load("static/data/RGB1.npy")
-    for i in range(len(images_list)):
-        sim_r = cv2.compareHist(data[query_index][0], data[i][0], cv2.HISTCMP_CORREL)
-        sim_g = cv2.compareHist(data[query_index][1], data[i][1], cv2.HISTCMP_CORREL)
-        sim_b = cv2.compareHist(data[query_index][2], data[i][2], cv2.HISTCMP_CORREL)
-        sim = (sim_r + sim_g + sim_b) / 3.0
-        similarity.append(sim)
+# if f == "0":
+#     similarity = []
+#
+#     data = np.load("static/data/RGB1.npy")
+#     for i in range(len(images_list)):
+#         sim_r = cv2.compareHist(data[query_index][0], data[i][0], cv2.HISTCMP_CORREL)
+#         sim_g = cv2.compareHist(data[query_index][1], data[i][1], cv2.HISTCMP_CORREL)
+#         sim_b = cv2.compareHist(data[query_index][2], data[i][2], cv2.HISTCMP_CORREL)
+#         sim = (sim_r + sim_g + sim_b) / 3.0
+#         similarity.append(sim)
 
 
 
