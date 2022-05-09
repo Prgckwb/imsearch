@@ -1,15 +1,5 @@
 import glob
 
-# language=HTML
-HEADER = '''
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/css/styles.css">
-    <link rel="script" href="static/javascript/main.js">
-    <title>柳井研究室CGI課題</title>
-</head>
-'''
-
 
 def get_page(image, feature):
     images = [img[1] for img in glob.glob("static/images/ramen/*.jpg")]
@@ -29,7 +19,12 @@ def get_page(image, feature):
     html_text = f'''
     <!DOCTYPE html>
     <html lang="ja">
-    {HEADER}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="script" href="static/javascript/main.js">
+        <title>柳井研究室CGI課題</title>
+    </head>
     <body>
     <section class="section">
         <div class="container">
