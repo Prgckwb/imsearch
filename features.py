@@ -25,7 +25,15 @@ def write_feature_data(data, file_name, data_dir="static/data"):
     np.save(f"{data_dir}/{file_name}", data)
 
 
+def write_alldata(images_list, method, filename, data_dir="static/data"):
+    all_data = np.empty((len(images_list),))
+
+    for i, image in enumerate(images_list):
+        data = method(image)
+        all_data[i] = data
+
+    np.save(f"{data_dir}/{filename}", all_data)
+
+
 if __name__ == '__main__':
-    h = rgb_hist(images_list[0])
-    print(h)
-    # write_feature_data(h, "sample")
+    write_alldata(images_list, rgb_hist, "sample")
