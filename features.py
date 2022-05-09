@@ -45,6 +45,7 @@ def write_alldata(images_list, method, filename, data_dir="static/data"):
     np.save(f"{data_dir}/{filename}", all_data)
 
 
+# 2つのヒストグラムの類似度をIntersectionで比較
 def compare_hist(data, query_index, images_list):
     similarity = []
     for i in range(len(images_list)):
