@@ -34,7 +34,7 @@ def get_page(query_index, feature, images_list, sorted_list):
                         <p class="title is-4">Query Image</p>
                         <img src="{images_list[query_index].path}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
-                        <p class="has-text-danger">[index] Similarity</p>
+                        <p class="is-text has-text-centered">[index] Similarity</p>
                     </div>
 
                     <!-- 特徴量切り替え -->
