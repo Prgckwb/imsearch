@@ -104,7 +104,8 @@ def create_images_table(image, feature, images_list):
 def create_feature_options(image):
     # language=HTML
     feature_options = f'''
-    <div class="feature-options menu">
+    <div class="content">
+        <div class="feature-options menu">
         <p class="title is-4">Feature Options</p>
 
         <div class="intersec-option">
@@ -125,7 +126,6 @@ def create_feature_options(image):
                 <li><a href="?i={image}&f=9">DCNN Features</a> </li>
             </ul>
         </div>
-        
         <div class="euclid-option">
             <p class="menu-label">Euclid</p>
             <ul class="menu-list">
@@ -144,6 +144,8 @@ def create_feature_options(image):
                 <li><a href="?i={image}&f=19">DCNN Features</a> </li>
             </ul>
         </div>
+    </div>
+
     </div>
     '''
     return feature_options
