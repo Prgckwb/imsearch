@@ -29,8 +29,9 @@ def get_page(query_index, feature, images_list):
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
-                        <img src="{images_list[int(query_index)].path}" alt=""
+                        <img src="{images_list[query_index].path}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
+                        <p class="has-text-danger">{images_list[query_index]}</p>
                     </div>
 
                     <!-- 特徴量切り替え -->
