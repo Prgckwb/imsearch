@@ -2,22 +2,35 @@ import glob
 
 
 def get_page(image, feature):
+    # 画像テーブルのサイズ
     table_w = 7
     table_h = 10
+
+    # 画像のサイズ
+    image_w = 120
+    image_h = 90
+
     images_table = ""
 
     imgs = [img for img in glob.glob("static/images/ramen/*.jpg")]
 
     for i in range(table_h):
+
+        # 画像テーブルの列を作成
         # language=HTML
         images_table += "<tr>"
+
         for j in range(table_w):
+
+            # 画像テーブルの列に対して画像をtable_wの分作成
             # language=HTML
             images_table += f'''
-                    <td><a href="./?image={7 * i + j}&feature={feature}">
-                        <img src={imgs[7 * i + j]} alt="hoge" style="width: 120px; height:90px; object-fit: cover">
+                    <td><a href="./?image={table_w * i + j}&feature={feature}">
+                        <img src={imgs[table_w * i + j]} alt="hoge" 
+                        style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                     </a></td>
                     '''
+
         # language=HTML
         images_table += "</tr>"
 
@@ -32,13 +45,18 @@ def get_page(image, feature):
         <title>柳井研究室CGI課題</title>
     </head>
     <body>
+    
     <section class="section">
         <div class="container">
+        
+            <!-- タイトル -->
             <p class="title is-2 has-text-centered">
                 Image Search by {feature} with Histogram Intersection {image}
             </p>
             
             <div class="columns">
+            
+                <!-- クエリ画像と特徴抽出手法選択-->
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
@@ -68,13 +86,13 @@ def get_page(image, feature):
                     </div>
                 </div>
 
-                    <!-- 画像のテーブル-->
-                    <div class="image-tables column">
-                        <p class="title is-4">Similar Images</p>
-                        <table class="table is-bordered">
-                            <tr>{images_table}</tr>
-                        </table>
-                    </div>
+                <!-- 画像のテーブル-->
+                <div class="image-tables column">
+                    <p class="title is-4">Similar Images</p>
+                    <table class="table is-bordered">
+                        <tr>{images_table}</tr>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
