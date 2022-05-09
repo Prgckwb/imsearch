@@ -5,7 +5,16 @@ import numpy as np
 from tqdm import tqdm
 
 IMAGE_DIR = "static/images/ramen"
+DATA_DIR = "static/data"
 images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
+
+FEATURES_NAME = {
+    "0": "RGB Histogram"
+}
+
+FEATURES_DATA_PATH = {
+    "0": f"{DATA_DIR}/RGB1.npy"
+}
 
 
 # RGBヒストグラムによる特徴量抽出を行う
@@ -31,7 +40,12 @@ def write_alldata(images_list, method, filename, data_dir="static/data"):
         all_data.append(data)
 
     all_data = np.array(all_data)
+
+    # 出力は(画像数, 3, 256, 1)のサイズ
     np.save(f"{data_dir}/{filename}", all_data)
+
+
+def compare_hist(hist1, hist2):
 
 
 if __name__ == '__main__':
