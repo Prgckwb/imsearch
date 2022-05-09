@@ -19,7 +19,7 @@ def get_page(image, feature, images_list):
                 Image Search by ??? with ???
             </p>
             
-            <p class="title is-3 has-text-centered has-text-warning">
+            <p class="title is-3 has-text-centered has-text-danger">
                 [DEBUG] Query: f = {feature}, i = {image}
             </p>
             
@@ -121,6 +121,27 @@ def create_feature_options(image):
                 <li><a href="?i={image}&f=6">LUV Color Histogram 1×1</a></li>
                 <li><a href="?i={image}&f=7">LUV Color Histogram 2×2</a></li>
                 <li><a href="?i={image}&f=8">LUV Color Histogram 3×3</a></li>
+                
+                <li><a href="?i={image}&f=9">DCNN Features</a> </li>
+            </ul>
+        </div>
+        
+        <div class="euclid-option">
+            <p class="menu-label">Euclid</p>
+            <ul class="menu-list">
+                <li><a href="?i={image}&f=10">RGB Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=11">RGB Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=12">RGB Color Histogram 3×3</a></li>
+
+                <li><a href="?i={image}&f=13">HSV Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=14">HSV Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=15">HSV Color Histogram 3×3</a></li>
+
+                <li><a href="?i={image}&f=16">LUV Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=17">LUV Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=18">LUV Color Histogram 3×3</a></li>
+                
+                <li><a href="?i={image}&f=19">DCNN Features</a> </li>
             </ul>
         </div>
     </div>
