@@ -141,6 +141,6 @@ def create_feature_options(image):
         feature_options += f'''
             <li><a href="?i={image}&f={key}">{value}</a></li>
         '''
-        feature_options += "</ul></div></div></div></div></div>"
+        feature_options += "</ul></div>"
 
     return feature_options
