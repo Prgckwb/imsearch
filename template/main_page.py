@@ -1,4 +1,4 @@
-from util import FEATURES_NAME_EUCLID, FEATURES_NAME_INTERSEC
+from util import FEATURES_NAME_EUCLID, FEATURES_NAME_INTERSEC,FEATURES_NAME
 
 
 # HTML情報を返す
@@ -19,7 +19,7 @@ def get_page(query_index, feature, images_list, sorted_list):
         
             <!-- タイトル -->
             <p class="title is-2 has-text-centered">
-                Image Search by ??? with ???
+                Image Search by {FEATURES_NAME[feature]}
             </p>
             
             <p class="title is-3 has-text-centered has-text-danger">
