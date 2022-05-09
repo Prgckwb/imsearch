@@ -1,49 +1,13 @@
 #! /usr/local/anaconda3/bin/python3
-
-
 import cgi
-import glob
-from dataclasses import dataclass
 
 import numpy as np
 
 import features as f
 from template.main_page import get_page
-
-
-@dataclass
-class Image:
-    path: str
-    index: int
-    similarity: float = 0
-
-    def __lt__(self, other):
-        return self.index < other.index
-
+from util import init_images, sort_list
 
 form = cgi.FieldStorage()
-IMAGE_DIR = "static/images/ramen"
-
-
-def init_images():
-    imgs_list = []
-    path_list = sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))
-    for i in range(len(path_list)):
-        image = Image(path_list[i], str(i))
-        imgs_list.append(image)
-    return imgs_list
-
-
-def sort_list(sim, target_list):
-    zip_list = zip(sim, target_list)
-    zip_sort = sorted(zip_list, reverse=True)
-    sim, target_list = zip(*zip_sort)
-
-    for i in range(len(target_list)):
-        target_list[i].similarity = sim[i]
-
-    return target_list
-
 
 images_list = init_images()
 sorted_list = images_list.copy()
