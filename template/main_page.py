@@ -76,8 +76,8 @@ def create_images_table(image, feature, images_list):
             # language=HTML
             images_table += f'''
                <td><a href="./?image={table_w * i + j}&feature={feature}">
-                   <img alt="hoge" src="{images_list[table_w * i + j]}" width="{image_w}" height="{image_h}"
-                   style="object-fit: cover">
+                   <img src="{images_list[table_w * i + j]}" alt="hoge" 
+                   style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                </a></td>
            '''
 
