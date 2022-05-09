@@ -46,9 +46,18 @@ def write_alldata(images_list, method, filename, data_dir="static/data"):
 
 
 def compare_hist(hist1, hist2):
+    d = np.minimum(hist1, hist2)
+    return d
 
 
 if __name__ == '__main__':
-    write_alldata(images_list, rgb_hist, "RGB1")
-    # d = np.load("static/data/RGB1.npy")
-    # print(d.shape)
+    data = np.load("static/data/RGB1.npy")
+    similarity = []
+    query_index = 0
+    for i in range(len(images_list)):
+        sim_r = compare_hist(data[query_index][0], data[i][0])
+        sim_g = compare_hist(data[query_index][1], data[i][1])
+        sim_b = compare_hist(data[query_index][2], data[i][2])
+        sim = (sim_r + sim_g + sim_b) / 3.0
+        similarity.append(sim.sum())
+    print(similarity)
