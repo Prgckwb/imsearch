@@ -41,7 +41,7 @@ feature = "0"
 
 # クエリ画像と特徴量メソッドの取得・定義
 if "i" in form:
-    query_index = form["i"].value
+    query_index = int(form["i"].value)
 
 if "f" in form:
     feature = form["f"].value
