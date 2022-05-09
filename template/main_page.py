@@ -114,7 +114,6 @@ def create_images_table(feature, images_list):
 def create_feature_options(image):
     # language=HTML
     feature_options = f'''
-    <div class="content">
         <div class="feature-options menu">
             <p class="title is-4">Feature Options</p>
     '''
