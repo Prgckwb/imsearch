@@ -50,7 +50,7 @@ similarity = None
 
 if feature == "0":
     data = np.load("static/data/RGB1.npy")
-    similarity = f.compare_hist(data, 0, images_list)
+    similarity = f.compare_hist(data, query_index, images_list)
 
 zip_list = zip(similarity, images_list)
 zip_sort = sorted(zip_list, reverse=True)
@@ -63,4 +63,3 @@ for i in range(len(images_list)):
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
 print(get_page(query_index, feature, images_list))
-print(similarity)
