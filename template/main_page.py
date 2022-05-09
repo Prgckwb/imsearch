@@ -19,7 +19,7 @@ def get_page(image, feature, images_list):
                 Image Search by ??? with ???
             </p>
             
-            <p class="title is-3 has-text-centered">
+            <p class="title is-3 has-text-centered has-text-warning">
                 [DEBUG] Query: f = {feature}, i = {image}
             </p>
             
