@@ -2,10 +2,10 @@ import glob
 
 
 def get_page(image, feature):
-
     table_w = 7
     table_h = 10
     images_table = ""
+
     imgs = [img for img in glob.glob("static/images/ramen/*.jpg")]
 
     for i in range(table_h):
@@ -14,8 +14,8 @@ def get_page(image, feature):
         for j in range(table_w):
             # language=HTML
             images_table += f'''
-                    <td><a href="./?image={7*i+j}&feature={feature}">
-                        <img src={imgs[7*i+j]} alt="hoge" style="width: 120px; height:90px; object-fit: cover">
+                    <td><a href="./?image={7 * i + j}&feature={feature}">
+                        <img src={imgs[7 * i + j]} alt="hoge" style="width: 120px; height:90px; object-fit: cover">
                     </a></td>
                     '''
         # language=HTML
