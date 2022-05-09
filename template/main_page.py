@@ -1,6 +1,4 @@
-import glob
-
-
+# HTML情報を返す
 def get_page(image, feature, images_list):
     # 画像テーブルのサイズ
     table_w = 7
@@ -24,7 +22,7 @@ def get_page(image, feature, images_list):
             # language=HTML
             images_table += f'''
                     <td><a href="./?image={table_w * i + j}&feature={feature}">
-                        <img src={images_list[table_w * i + j]} alt="hoge" 
+                        <img src="{images_list[table_w * i + j]}" alt="hoge" 
                         style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                     </a></td>
                     '''
