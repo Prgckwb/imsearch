@@ -20,7 +20,7 @@ def get_page(image, feature):
         images_area += f'''
         <td>
             <a href="/?image={img}&feature={feature}">
-                <img src="img" alt="">
+                <img src="{image}" alt="">
             </a>
         </td>
         '''
