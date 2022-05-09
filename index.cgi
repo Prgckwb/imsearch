@@ -13,7 +13,7 @@ images_list = init_images()
 sorted_list = images_list.copy()
 
 query_index = 0
-feature = "0"
+feature = "10"
 
 # クエリ画像と特徴量メソッドの取得・定義
 if "i" in form:
@@ -28,7 +28,7 @@ if feature == "0":
     data = np.load("static/data/RGB1.npy")
     similarity = f.compare_hist(data, query_index, images_list)
 
-sorted_list = sort_list(similarity, sorted_list)
+    sorted_list = sort_list(similarity, sorted_list)
 
 # ページの出力
 # ヘッダーには文末に改行が必要
