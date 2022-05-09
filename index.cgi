@@ -24,7 +24,7 @@ if "f" in form:
 
 similarity = None
 
-if feature == "0":
+if feature == "10":
     data = np.load("static/data/RGB1.npy")
     similarity = f.compare_hist(data, query_index, images_list)
 
