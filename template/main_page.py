@@ -1,7 +1,7 @@
 # HTML情報を返す
-def get_page(query_index, feature, images_list):
+def get_page(query_index, feature, images_list, sorted_list):
     head_text = create_head()
-    images_table = create_images_table(feature, images_list)
+    images_table = create_images_table(feature, sorted_list)
     feature_options = create_feature_options(query_index)
 
     # language=HTML
