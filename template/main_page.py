@@ -75,17 +75,18 @@ def create_images_table(image, feature, images_list):
             # 画像テーブルの列に対して画像をtable_wの分作成
             # language=HTML
             images_table += f'''
-                       <td><a href="./?image={table_w * i + j}&feature={feature}">
-                           <img src="{images_list[table_w * i + j]}" alt="hoge" 
-                           style="width: {image_w}px; height:{image_h}px; object-fit: cover">
-                       </a></td>
-                       '''
+               <td><a href="./?image={table_w * i + j}&feature={feature}">
+                   <img alt="hoge" src="{images_list[table_w * i + j]}" width="{image_w}" height="{image_h}"
+                   style="object-fit: cover">
+               </a></td>
+           '''
 
         # language=HTML
         images_table += "</tr>"
     return images_table
 
 
+# 特緒量選択リストを作成する
 def create_feature_options(image):
     # language=HTML
     feature_options = '''
