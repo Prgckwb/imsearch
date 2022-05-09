@@ -12,12 +12,12 @@ form = cgi.FieldStorage()
 IMAGE_DIR = "static/images/ramen"
 images_list = [img for img in glob.glob(f"{IMAGE_DIR}/*.jpg")]
 
-image = "0"
+query_index = "0"
 feature = "0"
 
 # クエリ画像と特徴量メソッドの取得・定義
 if "i" in form:
-    image = form["i"].value
+    query_index = form["i"].value
 
 if "f" in form:
     feature = form["f"].value
@@ -26,4 +26,4 @@ if "f" in form:
 # ページの出力
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
-print(get_page(image, feature, images_list))
+print(get_page(query_index, feature, images_list))

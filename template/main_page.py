@@ -1,8 +1,8 @@
 # HTML情報を返す
-def get_page(image, feature, images_list):
+def get_page(query_index, feature, images_list):
     head_text = create_head()
-    images_table = create_images_table(image, feature, images_list)
-    feature_options = create_feature_options(image)
+    images_table = create_images_table(feature, images_list)
+    feature_options = create_feature_options(query_index)
 
     # language=HTML
     html_text = f'''
@@ -20,7 +20,7 @@ def get_page(image, feature, images_list):
             </p>
             
             <p class="title is-3 has-text-centered has-text-danger">
-                [DEBUG] Query: f = {feature}, i = {image}
+                [DEBUG] Query: f = {feature}, i = {query_index}
             </p>
             
             <div class="columns">
@@ -29,7 +29,7 @@ def get_page(image, feature, images_list):
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
-                        <img src="{images_list[int(image)]}" alt=""
+                        <img src="{images_list[int(query_index)]}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
                     </div>
 
@@ -68,7 +68,7 @@ def create_head():
 
 
 # 画像一覧テーブルを作成する
-def create_images_table(image, feature, images_list):
+def create_images_table(feature, images_list):
     # 画像テーブルのサイズ
     table_w = 7
     table_h = 10
@@ -94,7 +94,7 @@ def create_images_table(image, feature, images_list):
                        <img src="{images_list[table_w * i + j]}" alt="hoge" 
                        style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                    </a><br>
-                   <p class="is-text has-text-centered">[{table_w*i+j}] 0.0000</p>
+                   <p class="is-text has-text-centered">[{table_w * i + j}] 0.0000</p>
                </td>
            '''
 
