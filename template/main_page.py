@@ -29,7 +29,7 @@ def get_page(image, feature, images_list):
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
-                        <img src="{images_list[0]}" alt=""
+                        <img src="{images_list[int(image)]}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
                     </div>
 
