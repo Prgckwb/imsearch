@@ -1,5 +1,6 @@
 import glob
 
+# language=HTML
 HEADER = '''
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,7 @@ def get_page(image, feature):
 
     images_area = ""
     for img in images:
+        # language=HTML
         images_area += f'''
         <td>
             <a href="/?image={img}&feature={feature}">
@@ -23,6 +25,7 @@ def get_page(image, feature):
         </td>
         '''
 
+    # language=HTML
     html_text = f'''
     <!DOCTYPE html>
     <html lang="ja">
