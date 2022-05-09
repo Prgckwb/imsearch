@@ -23,7 +23,7 @@ else:
 if "feature" in form:
     feature = form["feature"].value
 else:
-    feature = "RGB Histogram"
+    feature = "0"
 
 # ページの出力
 # ヘッダーには文末に改行が必要
