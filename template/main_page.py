@@ -116,58 +116,31 @@ def create_feature_options(image):
     feature_options = f'''
     <div class="content">
         <div class="feature-options menu">
-        <p class="title is-4">Feature Options</p>
+            <p class="title is-4">Feature Options</p>
     '''
 
     # language=HTML
     feature_options += f'''
-        <div class="intersec-option">
-            <p class="menu-label">Intersection</p>
-            <ul class="menu-list">
+            <div class="intersec-option">
+                <p class="menu-label">Intersection</p>
+                <ul class="menu-list">
     '''
     for key, value in FEATURES_NAME_INTERSEC.items():
         # language=HTML
-        feature_options += f'''
-            <li><a href="?i={image}&f={key}">{value}</a></li>
-        '''
+        feature_options += f'''<li><a href="?i={image}&f={key}">{value}</a></li>'''
 
-        # <li><a href="?i={image}&f=1">RGB Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=2">RGB Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=3">HSV Color Histogram 1×1</a></li>
-        # <li><a href="?i={image}&f=4">HSV Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=5">HSV Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=6">LUV Color Histogram 1×1</a></li>
-        # <li><a href="?i={image}&f=7">LUV Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=8">LUV Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=9">DCNN Features</a> </li>
     # language=HTML
     feature_options += f''' 
     </ul></div>
     <div class="euclid-option">
-    <p class="menu-label">Euclid</p>
-    <ul class="menu-list">
+        <p class="menu-label">Euclid</p>
+        <ul class="menu-list">
     '''
     for key, value in FEATURES_NAME_EUCLID.items():
         # language=HTML
         feature_options += f'''
             <li><a href="?i={image}&f={key}">{value}</a></li>
         '''
-        feature_options += "</ul></div></div>"
-        # <li></li>
-        # <li><a href="?i={image}&f=11">RGB Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=12">RGB Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=13">HSV Color Histogram 1×1</a></li>
-        # <li><a href="?i={image}&f=14">HSV Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=15">HSV Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=16">LUV Color Histogram 1×1</a></li>
-        # <li><a href="?i={image}&f=17">LUV Color Histogram 2×2</a></li>
-        # <li><a href="?i={image}&f=18">LUV Color Histogram 3×3</a></li>
-        #
-        # <li><a href="?i={image}&f=19">DCNN Features</a> </li>
+        feature_options += "</ul></div></div></div></div>"
 
     return feature_options
