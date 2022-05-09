@@ -1,6 +1,29 @@
 import glob
 from dataclasses import dataclass
 
+IMAGE_DIR = "static/images/ramen"
+DATA_DIR = "static/data"
+
+FEATURES_NAME_INTERSEC = {
+    "0": "RGB Color Histogram 1×1",
+    "1": "RGB Color Histogram 2×2",
+    "2": "RGB Color Histogram 3×3",
+    "3": "HSV Color Histogram 1×1",
+    "4": "HSV Color Histogram 2×2",
+    "5": "HSV Color Histogram 3×3",
+    "6": "LUV Color Histogram 1×1",
+    "7": "LUV Color Histogram 2×2",
+    "8": "LUV Color Histogram 3×3",
+    "9": "DCNN Features",
+}
+
+FEATURES_NAME_EUCLID = {}
+
+FEATURES_NAME = {**FEATURES_NAME_INTERSEC, **FEATURES_NAME_EUCLID}
+
+FEATURES_DATA_PATH = {
+    "0": f"{DATA_DIR}/RGB1.npy"
+}
 
 @dataclass
 class Image:
@@ -12,7 +35,6 @@ class Image:
         return self.index < other.index
 
 
-IMAGE_DIR = "static/images/ramen"
 
 
 def init_images():

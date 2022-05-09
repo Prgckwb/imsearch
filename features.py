@@ -3,18 +3,9 @@ import glob
 import cv2
 import numpy as np
 from tqdm import tqdm
+from util import IMAGE_DIR, DATA_DIR
 
-IMAGE_DIR = "static/images/ramen"
-DATA_DIR = "static/data"
 images_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
-
-FEATURES_NAME = {
-    "0": "RGB Histogram"
-}
-
-FEATURES_DATA_PATH = {
-    "0": f"{DATA_DIR}/RGB1.npy"
-}
 
 
 # RGBヒストグラムによる特徴量抽出を行う
