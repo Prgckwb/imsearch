@@ -3,13 +3,12 @@
 
 import cgi
 import glob
+from dataclasses import dataclass
 
-import cv2
 import numpy as np
 
-from template.main_page import get_page
 import features as f
-from dataclasses import dataclass
+from template.main_page import get_page
 
 
 @dataclass
@@ -53,14 +52,12 @@ if feature == "0":
     data = np.load("static/data/RGB1.npy")
     similarity = f.compare_hist(data, 0, images_list)
 
-
 zip_list = zip(similarity, images_list)
 zip_sort = sorted(zip_list, reverse=True)
 similarity, images_list = zip(*zip_sort)
 
 for i in range(len(images_list)):
     images_list[i].similarity = similarity[i]
-
 
 # ページの出力
 # ヘッダーには文末に改行が必要

@@ -58,4 +58,3 @@ def compare_hist(data, query_index, images_list):
 
 if __name__ == '__main__':
     data = np.load("static/data/RGB1.npy")
-
