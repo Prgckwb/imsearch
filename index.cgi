@@ -34,6 +34,17 @@ def init_images():
     return imgs_list
 
 
+def sort_list(sim, target_list):
+    zip_list = zip(sim, target_list)
+    zip_sort = sorted(zip_list, reverse=True)
+    sim, target_list = zip(*zip_sort)
+
+    for i in range(len(target_list)):
+        target_list[i].similarity = sim[i]
+
+    return target_list
+
+
 images_list = init_images()
 sorted_list = images_list.copy()
 
@@ -53,12 +64,7 @@ if feature == "0":
     data = np.load("static/data/RGB1.npy")
     similarity = f.compare_hist(data, query_index, images_list)
 
-zip_list = zip(similarity, sorted_list)
-zip_sort = sorted(zip_list, reverse=True)
-similarity, sorted_list = zip(*zip_sort)
-
-for i in range(len(sorted_list)):
-    sorted_list[i].similarity = similarity[i]
+sorted_list = sort_list(similarity, sorted_list)
 
 # ページの出力
 # ヘッダーには文末に改行が必要
