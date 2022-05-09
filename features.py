@@ -17,7 +17,7 @@ def rgb_hist(img_path):
     hist_g = cv2.calcHist([g], [0], None, [256], [0, 256]) / img_shape
     hist_r = cv2.calcHist([r], [0], None, [256], [0, 256]) / img_shape
 
-    hist = [hist_r, hist_g, hist_b]
+    hist = np.array([hist_r, hist_g, hist_b])
     return hist
 
 
