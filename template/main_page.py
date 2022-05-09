@@ -16,7 +16,11 @@ def get_page(image, feature, images_list):
         
             <!-- タイトル -->
             <p class="title is-2 has-text-centered">
-                Image Search by {feature} with Histogram Intersection {image}
+                Image Search by ??? with ???
+            </p>
+            
+            <p class="title is-3 has-text-centered">
+                [DEBUG] Query: f = {feature}, i = {image}
             </p>
             
             <div class="columns">
@@ -26,7 +30,7 @@ def get_page(image, feature, images_list):
                     <div class="block">
                         <p class="title is-4">Query Image</p>
                         <img src="static/images/ramen/2192.jpg" alt=""
-                        style="width: 200px; height: 100px; object-fit: cover">
+                        style="width: 250px; height: 200px; object-fit: cover">
                     </div>
 
                     <!-- 特徴量切り替え -->
