@@ -1,1 +1,7 @@
 @import url("bulma.css");
+
+img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+}

@@ -1,11 +1,9 @@
-#!　/usr/local/anaconda3/bin/python3
+#! /usr/local/anaconda3/bin/python3
 
 
 import cgi
 import cgitb
-import sys
 
-sys.stderr = sys.stdout
 
 from template.main_page import get_page
 
