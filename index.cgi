@@ -16,12 +16,12 @@ image = ""
 feature = "Unko"
 
 # クエリ画像と特徴量メソッドの取得・定義
-if "image" in form:
-    image = form["image"].value
+if "i" in form:
+    image = form["i"].value
 else:
     image = IMAGE_DIR + "/2192.jpg"
-if "feature" in form:
-    feature = form["feature"].value
+if "f" in form:
+    feature = form["f"].value
 else:
     feature = "0"
 

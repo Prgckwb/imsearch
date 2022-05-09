@@ -85,7 +85,7 @@ def create_images_table(image, feature, images_list):
             # 画像テーブルの列に対して画像をtable_wの分作成
             # language=HTML
             images_table += f'''
-               <td><a href="./?image={table_w * i + j}&feature={feature}">
+               <td><a href="./?i={table_w * i + j}&f={feature}">
                    <img src="{images_list[table_w * i + j]}" alt="hoge" 
                    style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                </a></td>
@@ -106,17 +106,17 @@ def create_feature_options(image):
         <div class="intersec-option">
             <p class="menu-label">Intersection</p>
             <ul class="menu-list">
-                <li><a href="?image={image}&f=0">RGB Color Histogram 1×1</a></li>
-                <li><a href="?image={image}&f=1">RGB Color Histogram 2×2</a></li>
-                <li><a href="?image={image}&f=2">RGB Color Histogram 3×3</a></li>
+                <li><a href="?i={image}&f=0">RGB Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=1">RGB Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=2">RGB Color Histogram 3×3</a></li>
 
-                <li><a href="?image={image}&f=3">HSV Color Histogram 1×1</a></li>
-                <li><a href="?image={image}&f=4">HSV Color Histogram 2×2</a></li>
-                <li><a href="?image={image}&f=5">HSV Color Histogram 3×3</a></li>
+                <li><a href="?i={image}&f=3">HSV Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=4">HSV Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=5">HSV Color Histogram 3×3</a></li>
 
-                <li><a href="?image={image}&f=6">LUV Color Histogram 1×1</a></li>
-                <li><a href="?image={image}&f=7">LUV Color Histogram 2×2</a></li>
-                <li><a href="?image={image}&f=8">LUV Color Histogram 3×3</a></li>
+                <li><a href="?i={image}&f=6">LUV Color Histogram 1×1</a></li>
+                <li><a href="?i={image}&f=7">LUV Color Histogram 2×2</a></li>
+                <li><a href="?i={image}&f=8">LUV Color Histogram 3×3</a></li>
             </ul>
         </div>
     </div>
