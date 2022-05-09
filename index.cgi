@@ -36,7 +36,7 @@ def init_images():
 
 images_list = init_images()
 
-query_index = "0"
+query_index = 0
 feature = "0"
 
 # クエリ画像と特徴量メソッドの取得・定義
