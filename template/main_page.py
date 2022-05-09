@@ -117,7 +117,7 @@ def create_feature_options(image):
     <div class="content">
         <div class="feature-options menu">
         <p class="title is-4">Feature Options</p>
-            '''
+    '''
 
     # language=HTML
     feature_options += f'''
@@ -155,7 +155,7 @@ def create_feature_options(image):
         feature_options += f'''
             <li><a href="?i={image}&f={key}">{value}</a></li>
         '''
-        feature_options += "</ul></div></div></div>"
+        feature_options += "</ul></div></div>"
         # <li></li>
         # <li><a href="?i={image}&f=11">RGB Color Histogram 2×2</a></li>
         # <li><a href="?i={image}&f=12">RGB Color Histogram 3×3</a></li>
