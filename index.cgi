@@ -3,6 +3,9 @@
 
 import cgi
 import cgitb
+import sys
+
+sys.stderr = sys.stdout
 
 from template.main_page import get_page
 
