@@ -2,16 +2,15 @@
 
 
 import cgi
-import cgitb
-
+import glob
 
 from template.main_page import get_page
 
-cgitb.enable(display=0, logdir="./log")
 
 form = cgi.FieldStorage()
 
 IMAGE_DIR = "static/images/ramen"
+images_list = [img for img in glob.glob("static/images/ramen/*.jpg")]
 
 image = ""
 feature = "Unko"
@@ -29,4 +28,4 @@ else:
 # ページの出力
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
-print(get_page(image, feature))
+print(get_page(image, feature, images_list))

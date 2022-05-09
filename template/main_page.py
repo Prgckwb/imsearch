@@ -1,18 +1,16 @@
 import glob
 
 
-def get_page(image, feature):
+def get_page(image, feature, images_list):
     # 画像テーブルのサイズ
     table_w = 7
     table_h = 10
 
     # 画像のサイズ
-    image_w = 120
-    image_h = 90
+    image_w = 200
+    image_h = 100
 
     images_table = ""
-
-    imgs = [img for img in glob.glob("static/images/ramen/*.jpg")]
 
     for i in range(table_h):
 
@@ -26,7 +24,7 @@ def get_page(image, feature):
             # language=HTML
             images_table += f'''
                     <td><a href="./?image={table_w * i + j}&feature={feature}">
-                        <img src={imgs[table_w * i + j]} alt="hoge" 
+                        <img src={images_list[table_w * i + j]} alt="hoge" 
                         style="width: {image_w}px; height:{image_h}px; object-fit: cover">
                     </a></td>
                     '''
