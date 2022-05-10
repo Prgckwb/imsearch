@@ -52,7 +52,7 @@ def extract_hist2(img_path, hist_type="RGB", split_n=1):
         hist_d2 = cv2.calcHist([d2], [0], None, [256], [0, 256]) / img_shape
         hist_d3 = cv2.calcHist([d1], [0], None, [256], [0, 256]) / img_shape
 
-        h = np.array(hist_d1, hist_d2, hist_d3)
+        h = np.array([hist_d1, hist_d2, hist_d3])
         hist.append(h)
     return hist
 
@@ -79,7 +79,7 @@ def write_alldata2(filename, data_type, data_dir="static/data"):
         all_data.append(data)
 
     all_data = np.array(all_data)
-    print(all_data)
+    print(all_data.shape)
 
 # 特徴量データの作成
 def create_features_data():
@@ -98,7 +98,7 @@ def split_image(img, n):
             separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
             images.append(separate_img)
 
-    return np.array(images)
+    return images
 
 
 if __name__ == '__main__':
