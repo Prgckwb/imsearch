@@ -73,4 +73,4 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    write_alldata("RGB1", "RGB")
+    create_features_data()
