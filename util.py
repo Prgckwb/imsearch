@@ -116,19 +116,19 @@ def sortedlist_by_feature(query_index, feature, images_list):
     elif feature == "11":
         data = np.load("static/data/RGB2.npy")
     elif feature == "12":
-        pass
+        data = np.load("static/data/RGB3.npy")
     elif feature == "13":
         data = np.load("static/data/HSV1.npy")
     elif feature == "14":
-        pass
+        data = np.load("static/data/HSV2.npy")
     elif feature == "15":
-        pass
+        data = np.load("static/data/HSV3.npy")
     elif feature == "16":
         data = np.load("static/data/LUV1.npy")
     elif feature == "17":
-        pass
+        data = np.load("static/data/LUV2.npy")
     elif feature == "18":
-        pass
+        data = np.load("static/data/LUV3.npy")
     elif feature == "19":
         pass
     else:

@@ -26,7 +26,7 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
 
     for img in imgs:
         # hist_type: RGBならそれぞれR.G.Bの情報
-        d1, d2, d3 = img[..., 0], img[..., 1], img[..., 2]
+        d1, d2, d3 = cv2.split(img)  # img[..., 0], img[..., 1], img[..., 2]
         img_shape = img.shape[0] * img.shape[1]
 
         # 画像サイズに依らないように正規化
@@ -56,26 +56,37 @@ def write_alldata(data_type, split_n=1, data_dir="static/data"):
 
 # 特徴量データの作成
 def create_features_data():
-    write_alldata("RGB")
-    write_alldata("HSV")
-    write_alldata("LUV")
-    write_alldata("RGB", 2)
-    write_alldata("HSV", 2)
-    write_alldata("LUV", 2)
+    type_list = ["RGB", "HSV", "LUV"]
+    for i in range(1, 4):
+        for c_type in type_list:
+            write_alldata(c_type, i)
 
 
 def split_image(img, n):
     h, w = img.shape[:2]
-    x0, y0 = int(w / n), int(h / n)
+    # x0, y0 = int(w / n), int(h / n)
 
     images = []
+    cy = 0
+    cx = 0
+    x0 = int(w / n)
+    y0 = int(h / n)
+
     for x in range(n):
         for y in range(n):
-            separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
+            separate_img = img[cy:cy + y0, cx:cx + x0, :]
+            cy = cy + y0
             images.append(separate_img)
+        cy = 0
+        cx = cx + x0
+        # separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
 
     return images
 
 
 if __name__ == '__main__':
     create_features_data()
+    # img = cv2.imread("static/images/2192.jpg")
+    # img = split_image(img, 3)
+    # cv2.imshow("hoge", img[9])
+    # cv2.waitKey(0)
