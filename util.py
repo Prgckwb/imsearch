@@ -134,11 +134,7 @@ def sortedlist_by_feature(query_index, feature, images_list):
     else:
         pass
 
-    if feature == "11":
-        similarity = compare_hist2(data, query_index, images_list)
-    else:
-        similarity = compare_hist(data, query_index, images_list)
-
+    similarity = compare_hist(data, query_index, images_list)
     sorted_list = sort_list(similarity, images_list)
     return sorted_list
 
