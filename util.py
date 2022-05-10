@@ -1,6 +1,8 @@
 import glob
 from dataclasses import dataclass
 
+import numpy as np
+
 IMAGE_DIR = "static/images/ramen"
 DATA_DIR = "static/data"
 
@@ -54,6 +56,18 @@ def init_images():
         image = Image(path_list[i], i)
         imgs_list.append(image)
     return imgs_list
+
+
+# 2つのヒストグラムの類似度をIntersectionで比較
+def compare_hist(data, query_index, images_list):
+    similarity = []
+    for i in range(len(images_list)):
+        sim_r = np.minimum(data[query_index][0], data[i][0])
+        sim_g = np.minimum(data[query_index][1], data[i][1])
+        sim_b = np.minimum(data[query_index][2], data[i][2])
+        sim = (sim_r + sim_g + sim_b) / 3.0
+        similarity.append(sim.sum())
+    return similarity
 
 
 def sort_list(sim, target_list):

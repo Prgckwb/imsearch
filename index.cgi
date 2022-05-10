@@ -3,9 +3,8 @@ import cgi
 
 import numpy as np
 
-import features as f
 from template.main_page import get_page
-from util import init_images, sort_list
+from util import init_images, sort_list, compare_hist
 
 form = cgi.FieldStorage()
 
@@ -26,8 +25,15 @@ similarity = None
 
 if feature == "10":
     data = np.load("static/data/RGB1.npy")
-    similarity = f.compare_hist(data, query_index, images_list)
-
+    similarity = compare_hist(data, query_index, images_list)
+    sorted_list = sort_list(similarity, sorted_list)
+elif feature == "13":
+    data = np.load("static/data/HSV1.npy")
+    similarity = compare_hist(data, query_index, images_list)
+    sorted_list = sort_list(similarity, sorted_list)
+elif feature == "16":
+    data = np.load("static/data/LUV1.npy")
+    similarity = compare_hist(data, query_index, images_list)
     sorted_list = sort_list(similarity, sorted_list)
 
 # ページの出力
