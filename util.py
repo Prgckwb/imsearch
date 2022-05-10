@@ -142,3 +142,12 @@ def sortedlist_by_feature(query_index, feature, images_list):
 
     sorted_list = sort_list(similarity, images_list)
     return sorted_list
+
+
+if __name__ == '__main__':
+    q = 0
+    f = "11"
+    i = init_images()
+    d = np.load("static/data/RGB2.npy")
+    sim = compare_hist2(d, q, init_images())
+    print(sim)
