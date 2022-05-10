@@ -79,3 +79,33 @@ def sort_list(sim, target_list):
         target_list[i].similarity = sim[i]
 
     return target_list
+
+
+def sortedlist_by_feature(query_index, feature, images_list):
+    data = None
+    if feature == "10":
+        data = np.load("static/data/RGB1.npy")
+    elif feature == "11":
+        pass
+    elif feature == "12":
+        pass
+    elif feature == "13":
+        data = np.load("static/data/HSV1.npy")
+    elif feature == "14":
+        pass
+    elif feature == "15":
+        pass
+    elif feature == "16":
+        data = np.load("static/data/LUV1.npy")
+    elif feature == "17":
+        pass
+    elif feature == "18":
+        pass
+    elif feature == "19":
+        pass
+    else:
+        pass
+
+    similarity = compare_hist(data, query_index, images_list)
+    sorted_list = sort_list(similarity, images_list)
+    return sorted_list

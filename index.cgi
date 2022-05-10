@@ -4,7 +4,7 @@ import cgi
 import numpy as np
 
 from template.main_page import get_page
-from util import init_images, sort_list, compare_hist
+from util import init_images, sort_list, compare_hist, sortedlist_by_feature
 
 form = cgi.FieldStorage()
 
@@ -23,18 +23,19 @@ if "f" in form:
 
 similarity = None
 
-if feature == "10":
-    data = np.load("static/data/RGB1.npy")
-    similarity = compare_hist(data, query_index, images_list)
-    sorted_list = sort_list(similarity, sorted_list)
-elif feature == "13":
-    data = np.load("static/data/HSV1.npy")
-    similarity = compare_hist(data, query_index, images_list)
-    sorted_list = sort_list(similarity, sorted_list)
-elif feature == "16":
-    data = np.load("static/data/LUV1.npy")
-    similarity = compare_hist(data, query_index, images_list)
-    sorted_list = sort_list(similarity, sorted_list)
+# if feature == "10":
+#     data = np.load("static/data/RGB1.npy")
+#     similarity = compare_hist(data, query_index, images_list)
+#     sorted_list = sort_list(similarity, sorted_list)
+# elif feature == "13":
+#     data = np.load("static/data/HSV1.npy")
+#     similarity = compare_hist(data, query_index, images_list)
+#     sorted_list = sort_list(similarity, sorted_list)
+# elif feature == "16":
+#     data = np.load("static/data/LUV1.npy")
+#     similarity = compare_hist(data, query_index, images_list)
+#     sorted_list = sort_list(similarity, sorted_list)
+sorted_list = sortedlist_by_feature(query_index, feature, images_list)
 
 # ページの出力
 # ヘッダーには文末に改行が必要
