@@ -21,7 +21,6 @@ def get_page(query_index, feature, images_list, sorted_list):
             <p class="title is-2 has-text-centered">
                 Image Search by {FEATURES_NAME[feature]}
             </p>
-            
 <!--            <p class="title is-3 has-text-centered has-text-danger">-->
 <!--                [DEBUG] Query: f = {feature}, i = {query_index}-->
 <!--            </p>-->
@@ -126,7 +125,7 @@ def create_feature_options(image):
     '''
     for key, value in FEATURES_NAME_INTERSEC.items():
         # language=HTML
-        feature_options += f'''<li><a href="?i={image}&f={key}" class="is-active">{value}</a></li>'''
+        feature_options += f'''<li><a href="?i={image}&f={key}">{value}</a></li>'''
 
     # language=HTML
     feature_options += f''' 
