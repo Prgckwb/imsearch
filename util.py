@@ -83,6 +83,21 @@ def compare_hist(data, query_index, images_list):
     return similarity
 
 
+def compare_hist2(data, query_index, images_list):
+    similarity_all = []
+    for i in range(len(images_list)):
+        similarity = []
+        for j in range(data.shape[1]):
+            sim_d1 = np.minimum(data[query_index][j][0], data[i][j][0])
+            sim_d2 = np.minimum(data[query_index][j][1], data[i][j][1])
+            sim_d3 = np.minimum(data[query_index][j][2], data[i][j][2])
+            sim = (sim_d1 + sim_d2 + sim_d3) / 3.0
+            similarity.append(sim.sum())
+        img_sim = np.array(similarity_all).sum()
+        similarity_all.append(img_sim)
+    return similarity_all
+
+
 def sort_list(sim, target_list):
     zip_list = zip(sim, target_list)
     zip_sort = sorted(zip_list, reverse=True)
@@ -99,7 +114,7 @@ def sortedlist_by_feature(query_index, feature, images_list):
     if feature == "10":
         data = np.load("static/data/RGB1.npy")
     elif feature == "11":
-        pass
+        data = np.load("static/data/RGB2.npy")
     elif feature == "12":
         pass
     elif feature == "13":
@@ -119,6 +134,10 @@ def sortedlist_by_feature(query_index, feature, images_list):
     else:
         pass
 
-    similarity = compare_hist(data, query_index, images_list)
+    if feature == "11":
+        similarity = compare_hist2(data, query_index, images_list)
+    else:
+        similarity = compare_hist(data, query_index, images_list)
+
     sorted_list = sort_list(similarity, images_list)
     return sorted_list
