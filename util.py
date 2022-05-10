@@ -60,11 +60,13 @@ def init_images():
     # return imgs_list
 
     imgs_list = []
+    n = 0
     for dir in IMAGE_DIR_NAMES:
         path_list = sorted(glob.glob(f"{IMAGE_DIR}/{dir}/*.jpg"))
-        for i in range(len(path_list)):
-            image = Image(path_list[i], i)
+        for path in path_list:
+            image = Image(path, n)
             imgs_list.append(image)
+            n += 1
     return imgs_list
 
 
