@@ -39,11 +39,11 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
-def write_alldata(filename, data_type, data_dir="static/data"):
+def write_alldata(filename, data_type, split_n=1, data_dir="static/data"):
     all_data = []
 
     for i, image in enumerate(tqdm(images_path_list)):
-        data = extract_hist(image, data_type)
+        data = extract_hist(image, data_type, split_n)
         all_data.append(data)
 
     all_data = np.array(all_data)
@@ -51,16 +51,6 @@ def write_alldata(filename, data_type, data_dir="static/data"):
     # 出力は(画像数, 3, 256, 1)のサイズ
     np.save(f"{data_dir}/{filename}", all_data)
 
-
-def write_alldata2(filename, data_type, data_dir="static/data"):
-    all_data = []
-
-    for i, image in enumerate(tqdm(images_path_list)):
-        data = extract_hist(image, data_type, 2)
-        all_data.append(data)
-
-    all_data = np.array(all_data)
-    print(all_data.shape)
 
 # 特徴量データの作成
 def create_features_data():
