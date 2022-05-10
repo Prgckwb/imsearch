@@ -27,6 +27,6 @@ sorted_list = sortedlist_by_feature(query_index, feature, images_list)
 # ページの出力
 # ヘッダーには文末に改行が必要
 print('Content-Type: text/html\n')
-
+print(query_index, feature)
 html = get_page(query_index, feature, images_list, sorted_list)
 print(html)
