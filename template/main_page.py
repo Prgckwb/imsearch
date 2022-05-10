@@ -126,7 +126,7 @@ def create_feature_options(image):
     '''
     for key, value in FEATURES_NAME_INTERSEC.items():
         # language=HTML
-        feature_options += f'''<li><a href="?i={image}&f={key}">{value}</a></li>'''
+        feature_options += f'''<li><a href="?i={image}&f={key}" class="is-active">{value}</a></li>'''
 
     # language=HTML
     feature_options += f''' 
