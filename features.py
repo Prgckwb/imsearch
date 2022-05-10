@@ -62,31 +62,24 @@ def create_features_data():
             write_alldata(c_type, i)
 
 
+# 画像 img を n 分割した結果をリストで返す
 def split_image(img, n):
     h, w = img.shape[:2]
-    # x0, y0 = int(w / n), int(h / n)
 
-    images = []
-    cy = 0
-    cx = 0
-    x0 = int(w / n)
-    y0 = int(h / n)
+    split_images = []
+    cx, cy = 0
+    x0, y0 = int(w / n), int(h / n)
 
     for x in range(n):
         for y in range(n):
-            separate_img = img[cy:cy + y0, cx:cx + x0, :]
-            cy = cy + y0
-            images.append(separate_img)
+            part_image = img[cy:cy + y0, cx:cx + x0, :]
+            cy += y0
+            split_images.append(part_image)
         cy = 0
-        cx = cx + x0
-        # separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
+        cx += x0
 
-    return images
+    return split_images
 
 
 if __name__ == '__main__':
     create_features_data()
-    # img = cv2.imread("static/images/2192.jpg")
-    # img = split_image(img, 3)
-    # cv2.imshow("hoge", img[9])
-    # cv2.waitKey(0)

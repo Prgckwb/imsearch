@@ -111,6 +111,7 @@ def sort_list(sim, target_list):
 
 def sortedlist_by_feature(query_index, feature, images_list):
     data = None
+
     if feature == "10":
         data = np.load("static/data/RGB1.npy")
     elif feature == "11":
@@ -140,11 +141,4 @@ def sortedlist_by_feature(query_index, feature, images_list):
 
 
 if __name__ == '__main__':
-    q = 0
-    f = "10"
-    i = init_images()
-    # d = np.load("static/data/RGB2.npy")
-    d = np.load("static/data/RGB1.npy")
-    sim = compare_hist(d, q, init_images())
-    # sim = compare_hist(d, q, init_images())
-    print(sim)
+    pass
