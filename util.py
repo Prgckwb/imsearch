@@ -74,12 +74,27 @@ def get_queries(form):
 # 2つのヒストグラムの類似度をIntersectionで比較
 def compare_hist(data, query_index, images_list):
     similarity = []
+
+    # 画像を何分割したデータであるか
+    n = data.shape[1]
+
+    # データセットの一枚ごとについて比較
     for i in range(len(images_list)):
-        sim_r = np.minimum(data[query_index][0][0], data[i][0][0])
-        sim_g = np.minimum(data[query_index][0][1], data[i][0][1])
-        sim_b = np.minimum(data[query_index][0][2], data[i][0][2])
-        sim = (sim_r + sim_g + sim_b) / 3.0
-        similarity.append(sim.sum())
+        # 画像を分割した領域ごとの類似度
+        region_sum = []
+
+        # 分割した領域ごとについて比較
+        for j in range(n):
+            sim_d1 = np.minimum(data[query_index][j][0], data[i][j][0])
+            sim_d2 = np.minimum(data[query_index][j][1], data[i][j][1])
+            sim_d3 = np.minimum(data[query_index][j][2], data[i][j][2])
+            sim = (sim_d1 + sim_d2 + sim_d3) / 3.0
+
+            region_sum.append(sim.sum())
+
+        # 画像1枚についての類似度
+        image_sum = np.array(region_sum).sum() / n
+        similarity.append(image_sum)
     return similarity
 
 
