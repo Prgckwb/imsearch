@@ -36,6 +36,7 @@ FEATURES_DATA_PATH = {
     "0": f"{DATA_DIR}/RGB1.npy"
 }
 
+
 @dataclass
 class Image:
     path: str
@@ -44,8 +45,6 @@ class Image:
 
     def __lt__(self, other):
         return self.index < other.index
-
-
 
 
 def init_images():
