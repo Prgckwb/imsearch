@@ -74,7 +74,7 @@ def create_head():
 def create_images_table(feature, images_list):
     # 画像テーブルのサイズ
     table_w = 7
-    table_h = 20
+    table_h = 10
 
     # 画像のサイズ
     image_w = 200
