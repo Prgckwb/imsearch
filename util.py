@@ -3,7 +3,9 @@ from dataclasses import dataclass
 
 import numpy as np
 
-IMAGE_DIR = "static/images/ramen"
+# IMAGE_DIR = "static/images/ramen"
+IMAGE_DIR = "static/images"
+IMAGE_DIR_NAMES = ["ramen", "lion"]
 DATA_DIR = "static/data"
 
 FEATURES_NAME_INTERSEC = {
@@ -50,11 +52,19 @@ class Image:
 
 
 def init_images():
+    # imgs_list = []
+    # path_list = sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))
+    # for i in range(len(path_list)):
+    #     image = Image(path_list[i], i)
+    #     imgs_list.append(image)
+    # return imgs_list
+
     imgs_list = []
-    path_list = sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))
-    for i in range(len(path_list)):
-        image = Image(path_list[i], i)
-        imgs_list.append(image)
+    for dir in IMAGE_DIR_NAMES:
+        path_list = sorted(glob.glob(f"{IMAGE_DIR}/{dir}/*.jpg"))
+        for i in range(len(path_list)):
+            image = Image(path_list[i], i)
+            imgs_list.append(image)
     return imgs_list
 
 
