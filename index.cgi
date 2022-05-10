@@ -21,8 +21,6 @@ images_list = init_images()
 # if "f" in form:
 #     feature = form["f"].value
 query_index, feature = get_queries(form)
-print(query_index)
-print(feature)
 
 sorted_list = sortedlist_by_feature(query_index, feature, images_list)
 
