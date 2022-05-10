@@ -67,7 +67,7 @@ def split_image(img, n):
     h, w = img.shape[:2]
 
     split_images = []
-    cx, cy = 0
+    cx, cy = 0, 0
     x0, y0 = int(w / n), int(h / n)
 
     for x in range(n):

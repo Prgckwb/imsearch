@@ -12,7 +12,7 @@ def get_page(query_index, feature, images_list, sorted_list):
     <!DOCTYPE html>
     <html lang="ja">
    {head_text}
-    <body>
+    <body onload="activateFeatureOption()">
     
     <section class="section">
         <div class="container">
@@ -21,19 +21,14 @@ def get_page(query_index, feature, images_list, sorted_list):
             <p class="title is-2 has-text-centered">
                 Image Search by {FEATURES_NAME[feature]}
             </p>
-<!--            <p class="title is-3 has-text-centered has-text-danger">-->
-<!--                [DEBUG] Query: f = {feature}, i = {query_index}-->
-<!--            </p>-->
             
             <div class="columns">
-            
                 <!-- クエリ画像と特徴抽出手法選択-->
                 <div class="column is-one-fifth">
                     <div class="block">
                         <p class="title is-4">Query Image</p>
                         <img src="{images_list[query_index].path}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
-<!--                        <p class="is-text has-text-centered">[index] Similarity</p>-->
                     </div>
 
                     <!-- 特徴量切り替え -->
