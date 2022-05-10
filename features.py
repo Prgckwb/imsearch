@@ -59,14 +59,11 @@ def split_image(img, n):
     images = []
     for x in range(n):
         for y in range(n):
-            separate_img = img[x0*x: x0*(x+1), y0*y: y0*(y+1)]
+            separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
             images.append(separate_img)
 
     return np.array(images)
 
 
 if __name__ == '__main__':
-    img = cv2.imread("static/images/2192.jpg")
-    img1 = split_image(img, 2)
-    cv2.imshow("hoge", img1[1])
-    cv2.waitKey(0)
+    pass
