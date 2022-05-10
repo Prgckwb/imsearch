@@ -60,7 +60,7 @@ def init_images():
 
 def get_queries(form):
     query_index = 0
-    feature = "10"
+    feature = "13"
 
     if "i" in form:
         query_index = int(form["i"].value)
