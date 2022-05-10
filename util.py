@@ -58,6 +58,18 @@ def init_images():
     return imgs_list
 
 
+def get_queries(form):
+    query_index = 0,
+    feature = "10"
+
+    if "i" in form:
+        query_index = int(form["i"].value)
+    if "f" in form:
+        feature = form["f"].value
+
+    return query_index, feature
+
+
 # 2つのヒストグラムの類似度をIntersectionで比較
 def compare_hist(data, query_index, images_list):
     similarity = []
