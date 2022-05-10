@@ -5,7 +5,7 @@ import numpy as np
 
 # IMAGE_DIR = "static/images/ramen"
 IMAGE_DIR = "static/images"
-IMAGE_DIR_NAMES = ["ramen", "lion"]
+IMAGE_DIR_NAMES = ["ramen"]
 DATA_DIR = "static/data"
 
 FEATURES_NAME_INTERSEC = {
