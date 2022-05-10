@@ -22,9 +22,9 @@ def get_page(query_index, feature, images_list, sorted_list):
                 Image Search by {FEATURES_NAME[feature]}
             </p>
             
-            <p class="title is-3 has-text-centered has-text-danger">
-                [DEBUG] Query: f = {feature}, i = {query_index}
-            </p>
+<!--            <p class="title is-3 has-text-centered has-text-danger">-->
+<!--                [DEBUG] Query: f = {feature}, i = {query_index}-->
+<!--            </p>-->
             
             <div class="columns">
             
@@ -34,7 +34,7 @@ def get_page(query_index, feature, images_list, sorted_list):
                         <p class="title is-4">Query Image</p>
                         <img src="{images_list[query_index].path}" alt=""
                         style="width: 250px; height: 200px; object-fit: cover">
-                        <p class="is-text has-text-centered">[index] Similarity</p>
+<!--                        <p class="is-text has-text-centered">[index] Similarity</p>-->
                     </div>
 
                     <!-- 特徴量切り替え -->
@@ -75,7 +75,7 @@ def create_head():
 def create_images_table(feature, images_list):
     # 画像テーブルのサイズ
     table_w = 7
-    table_h = 10
+    table_h = 20
 
     # 画像のサイズ
     image_w = 200
