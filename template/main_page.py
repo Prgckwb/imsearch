@@ -58,7 +58,7 @@ def create_head():
      <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="static/css/styles.css">
-        <link rel="script" href="static/javascript/main.js">
+        <script src="/static/javascript/main.js"
         <title>柳井研究室CGI課題</title>
     </head>
     '''
