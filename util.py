@@ -98,23 +98,6 @@ def compare_hist(data, query_index, images_list):
     return similarity
 
 
-def compare_hist2(data, query_index, images_list):
-    similarity_all = []
-    for i in range(len(images_list)):
-        similarity = []
-        for j in range(data.shape[1]):
-            sim_d1 = np.minimum(data[query_index][j][0], data[i][j][0])
-            sim_d2 = np.minimum(data[query_index][j][1], data[i][j][1])
-            sim_d3 = np.minimum(data[query_index][j][2], data[i][j][2])
-            sim = (sim_d1 + sim_d2 + sim_d3) / 3.0
-
-            similarity.append(sim.sum())
-        img_sim = np.array(similarity).sum() / 4.0
-        similarity_all.append(img_sim)
-
-    return similarity_all
-
-
 def sort_list(sim, target_list):
     zip_list = zip(sim, target_list)
     zip_sort = sorted(zip_list, reverse=True)
@@ -164,8 +147,8 @@ if __name__ == '__main__':
     q = 0
     f = "10"
     i = init_images()
-    d = np.load("static/data/RGB2.npy")
-    # d = np.load("static/data/RGB1.npy")
-    sim = compare_hist2(d, q, init_images())
+    # d = np.load("static/data/RGB2.npy")
+    d = np.load("static/data/RGB1.npy")
+    sim = compare_hist(d, q, init_images())
     # sim = compare_hist(d, q, init_images())
     print(sim)
