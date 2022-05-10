@@ -60,7 +60,7 @@ def write_alldata2(filename, data_type, data_dir="static/data"):
         all_data.append(data)
 
     all_data = np.array(all_data)
-    print(all_data)
+    print(all_data.shape)
 
 # 特徴量データの作成
 def create_features_data():
@@ -79,7 +79,7 @@ def split_image(img, n):
             separate_img = img[x0 * x: x0 * (x + 1), y0 * y: y0 * (y + 1)]
             images.append(separate_img)
 
-    return np.array(images)
+    return images
 
 
 if __name__ == '__main__':
