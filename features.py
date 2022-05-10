@@ -59,6 +59,9 @@ def create_features_data():
     write_alldata("RGB")
     write_alldata("HSV")
     write_alldata("LUV")
+    write_alldata("RGB", 2)
+    write_alldata("HSV", 2)
+    write_alldata("LUV", 2)
 
 
 def split_image(img, n):
