@@ -52,5 +52,18 @@ def create_features_data():
     write_alldata(extract_hist, "LUV1", "LUV")
 
 
+def split_image(img, n):
+    h, w = img.shape[:2]
+    x0, y0 = int(h / n), int(w / n)
+
+    images = []
+    for x in range(n):
+        for y in range(n):
+            separate_img = img[x0*x: x0:(x+1), y0*y: y0*(y+1)]
+            images.append(separate_img)
+
+    return np.array(images)
+
+
 if __name__ == '__main__':
     create_features_data()
