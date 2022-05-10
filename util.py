@@ -61,7 +61,7 @@ def init_images():
 
 def get_queries(form):
     query_index = 0
-    feature = "10"
+    feature = "11"
 
     if "i" in form:
         query_index = int(form["i"].value)
@@ -95,6 +95,7 @@ def compare_hist2(data, query_index, images_list):
             similarity.append(sim.sum())
         img_sim = np.array(similarity_all).sum()
         similarity_all.append(img_sim)
+        print(img_sim)
     return similarity_all
 
 
