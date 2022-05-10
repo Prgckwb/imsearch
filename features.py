@@ -10,7 +10,8 @@ images_path_list = [img for img in sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))]
 
 
 # RGBヒストグラムによる特徴量抽出を行う
-def extract_hist(img_path, hist_type="RGB"):
+# split_n = 2の場合は画像を2×2に分割
+def extract_hist(img_path, hist_type="RGB", split_n=1):
     img = cv2.imread(img_path)
 
     if hist_type == "RGB":
@@ -20,40 +21,20 @@ def extract_hist(img_path, hist_type="RGB"):
     elif hist_type == "LUV":
         img = cv2.cvtColor(img, cv2.COLOR_BGR2LUV)
 
-    d1, d2, d3 = img[..., 0], img[..., 1], img[..., 2]
-    img_shape = img.shape[0] * img.shape[1]
-
-    hist_d1 = cv2.calcHist([d3], [0], None, [256], [0, 256]) / img_shape
-    hist_d2 = cv2.calcHist([d2], [0], None, [256], [0, 256]) / img_shape
-    hist_d3 = cv2.calcHist([d1], [0], None, [256], [0, 256]) / img_shape
-
-    hist = np.array([hist_d1, hist_d2, hist_d3])
-    return hist
-
-
-def extract_hist2(img_path, hist_type="RGB", split_n=1):
-    img = cv2.imread(img_path)
-
-    if hist_type == "RGB":
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    elif hist_type == "HSV":
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    elif hist_type == "LUV":
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2LUV)
-
-    images = split_image(img, split_n)
+    imgs = split_image(img, split_n)
     hist = []
 
-    for image in images:
-        d1, d2, d3 = image[..., 0], image[..., 1], image[..., 2]
-        img_shape = image.shape[0] * image.shape[1]
+    for img in imgs:
+        d1, d2, d3 = img[..., 0], img[..., 1], img[..., 2]
+        img_shape = img.shape[0] * img.shape[1]
 
         hist_d1 = cv2.calcHist([d3], [0], None, [256], [0, 256]) / img_shape
         hist_d2 = cv2.calcHist([d2], [0], None, [256], [0, 256]) / img_shape
         hist_d3 = cv2.calcHist([d1], [0], None, [256], [0, 256]) / img_shape
 
-        h = np.array(hist_d1, hist_d2, hist_d3)
+        h = np.array([hist_d1, hist_d2, hist_d3])
         hist.append(h)
+
     return hist
 
 
@@ -75,7 +56,7 @@ def write_alldata2(filename, data_type, data_dir="static/data"):
     all_data = []
 
     for i, image in enumerate(tqdm(images_path_list)):
-        data = extract_hist2(image, data_type, 2)
+        data = extract_hist(image, data_type, 2)
         all_data.append(data)
 
     all_data = np.array(all_data)
