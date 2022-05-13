@@ -1,4 +1,4 @@
-from util import FEATURES_NAME_EUCLID, FEATURES_NAME_INTERSEC,FEATURES_NAME
+from util import FEATURES_NAME_EUCLID, FEATURES_NAME_INTERSEC, FEATURES_NAME
 
 
 # HTML情報を返す
@@ -32,6 +32,9 @@ def get_page(query_index, feature, images_list, sorted_list):
 
                     <!-- 特徴量切り替え -->
                     {feature_options}
+                    
+                    <!-- 上下切り替え -->
+                    <p class="button is-rounded is-primary">結果を逆順にする</p>
                 </div>
 
                 <!-- 画像のテーブル-->
