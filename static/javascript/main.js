@@ -18,5 +18,5 @@ function getUrlQueries() {
 function activateFeatureOption() {
     let queries = getUrlQueries()
     let feature_option = document.getElementById(queries['f'])
-    feature_option.classList.add("is_active")
+    feature_option.classList.add("is-active")
 }
