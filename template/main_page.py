@@ -16,6 +16,7 @@ def get_page(query_index, feature, images_list, sorted_list):
     
     <section class="section">
         <div class="container">
+        <img src="static/images/2192.jpg">
         
             <!-- タイトル -->
             <p class="title is-2 has-text-centered">
