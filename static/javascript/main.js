@@ -17,7 +17,7 @@ function getUrlQueries() {
 // クエリ情報を吐き出す
 function activateFeatureOption() {
     let queries = getUrlQueries()
-    console.log(queries["f"])
+    console.log(queries.f)
     console.log("aiueo")
-    console.log(queries["i"])
+    console.log(queries.i)
 }
