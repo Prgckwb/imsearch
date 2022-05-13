@@ -18,4 +18,5 @@ function getUrlQueries() {
 function activateFeatureOption() {
     let queries = getUrlQueries()
     console.log(queries["f"])
+    console.log(queries["i"])
 }
