@@ -5,7 +5,6 @@ import glob
 
 import cv2
 import numpy as np
-import torch.cuda
 import torch.nn as nn
 from PIL import Image
 from torchvision import models, transforms
@@ -47,7 +46,15 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
     return hist
 
 
-def extract_dcnn_hist(img_path):
+def extract_dcnn_hist(img_path, transform, model):
+    img = Image.open(img_path)
+    img = transform(img).unsqueeze(0)
+    output = model(img)
+
+    return output
+
+
+def write_dcnn_data():
     model = models.vgg16(pretrained=True)
 
     # 最終層を取り除く
@@ -67,21 +74,10 @@ def extract_dcnn_hist(img_path):
         )
     ])
 
-    img = Image.open(img_path)
-    img = transform(img).unsqueeze(0)
-    output = model(img)
-
-    return output
-
-
-def write_dcnn_data():
-    all_data = []
-
-    for i, image in enumerate(tqdm(images_path_list)):
-        data = extract_dcnn_hist(image)
-        all_data.append(data)
-    all_data = np.array(all_data)
-    print(all_data.shape)
+    with open("static/data/dcnn_feature.txt", "a") as f:
+        for i, image in enumerate(tqdm(images_path_list)):
+            data = extract_dcnn_hist(image, transform, model)
+            f.write(data)
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
