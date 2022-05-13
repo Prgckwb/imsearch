@@ -77,7 +77,7 @@ def write_dcnn_data():
     with open("static/data/dcnn_feature.txt", "a") as f:
         for i, image in enumerate(tqdm(images_path_list)):
             data = extract_dcnn_hist(image, transform, model)
-            f.write(data)
+            f.write(str(data))
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
