@@ -38,7 +38,7 @@ def get_page(query_index, feature, images_list, sorted_list):
                 <div class="image-tables column">
                     <p class="title is-4">Similar Images</p>
                     <table class="table is-bordered">
-                        <tr>{images_table}</tr>
+                        {images_table}
                     </table>
                 </div>
             </div>
