@@ -45,6 +45,16 @@ FEATURES_DATA_PATH = {
     "16": f"{DATA_DIR}/LUV1.npy",
     "17": f"{DATA_DIR}/LUV2.npy",
     "18": f"{DATA_DIR}/LUV3.npy",
+
+    "20": f"{DATA_DIR}/RGB1.npy",
+    "21": f"{DATA_DIR}/RGB2.npy",
+    "22": f"{DATA_DIR}/RGB3.npy",
+    "23": f"{DATA_DIR}/HSV1.npy",
+    "24": f"{DATA_DIR}/HSV2.npy",
+    "25": f"{DATA_DIR}/HSV3.npy",
+    "26": f"{DATA_DIR}/LUV1.npy",
+    "27": f"{DATA_DIR}/LUV2.npy",
+    "28": f"{DATA_DIR}/LUV3.npy",
 }
 
 
