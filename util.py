@@ -153,7 +153,7 @@ def compare_hist(data, query_index, feature, images_list):
             for i in range(len(images_list)):
                 s = np.minimum(data[query_index][0], data[i][0])
                 s = s / np.sum(s)
-                similarity.append(s)
+                similarity.append(s[i])
     return similarity
 
 
