@@ -126,4 +126,6 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    write_dcnn_data()
+    # write_dcnn_data()
+    a = np.loadtxt("static/data/dcnn_feature.txt")
+    print(a.shape)
