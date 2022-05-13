@@ -130,4 +130,4 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    write_dcnn_data()
+    print(np.load("static/data/DCNN.npy").shape)
