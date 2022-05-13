@@ -73,8 +73,18 @@ def extract_dcnn_hist(img_path):
     return output
 
 
+def write_dcnn_data():
+    all_data = []
+
+    for i, image in enumerate(tqdm(images_path_list)):
+        data = extract_dcnn_hist(image)
+        all_data.append(data)
+    all_data = np.array(all_data)
+    print(all_data.shape)
+
+
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
-def write_alldata(data_type, split_n=1, data_dir="static/data"):
+def write_data(data_type, split_n=1, data_dir="static/data"):
     all_data = []
 
     for i, image in enumerate(tqdm(images_path_list)):
@@ -92,7 +102,7 @@ def create_features_data():
     type_list = ["RGB", "HSV", "LUV"]
     for i in range(1, 4):
         for c_type in type_list:
-            write_alldata(c_type, i)
+            write_data(c_type, i)
 
 
 # 画像 img を n 分割した結果をリストで返す
@@ -115,6 +125,4 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    path = "static/images/2192.jpg"
-    a = extract_dcnn_hist(path)
-    print(a.shape)
+    write_dcnn_data()
