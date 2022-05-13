@@ -118,14 +118,26 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    # path = "static/images/2192.jpg"
+    path = "static/images/2192.jpg"
     # extract_dcnn_hist(path)
     model = models.vgg16(pretrained=True)
-    print(model)
-
-    print("~~~~~~~~~~~~~~~~~~~~~")
-    model = nn.Sequential(
-        *list(model.children())[:-1],
-        *list(model.children())[-1][:-1]
+    layers = list(model.classifier.children())[:-2]
+    model.classifier = nn.Sequential(*layers)
+    img = Image.open(path)
+    normalize = transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
     )
-    print(model)
+
+    preprocess = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        normalize
+    ])
+
+    model.eval()
+    img = preprocess(img)
+    img = img.unsqueeze(0)
+    out = model(img)
+    print(out.shape)
