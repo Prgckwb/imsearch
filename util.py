@@ -45,6 +45,7 @@ FEATURES_DATA_PATH = {
     "16": f"{DATA_DIR}/LUV1.npy",
     "17": f"{DATA_DIR}/LUV2.npy",
     "18": f"{DATA_DIR}/LUV3.npy",
+    "19": f"{DATA_DIR}/DCNN.npy",
 
     "20": f"{DATA_DIR}/RGB1.npy",
     "21": f"{DATA_DIR}/RGB2.npy",
@@ -55,6 +56,7 @@ FEATURES_DATA_PATH = {
     "26": f"{DATA_DIR}/LUV1.npy",
     "27": f"{DATA_DIR}/LUV2.npy",
     "28": f"{DATA_DIR}/LUV3.npy",
+    "29": f"{DATA_DIR}/DCNN.npy",
 }
 
 
@@ -101,43 +103,50 @@ def compare_hist(data, query_index, feature, images_list):
 
     # EUCLIDで比較する場合
     if feature in FEATURES_NAME_EUCLID:
-        # データセットの一枚ごとについて比較
-        for i in range(len(images_list)):
-            # 画像を分割した領域ごとの類似度
-            region_sum = []
+        if feature != "29":
+            # データセットの一枚ごとについて比較
+            for i in range(len(images_list)):
+                # 画像を分割した領域ごとの類似度
+                region_sum = []
 
-            # 分割した領域ごとについて比較
-            for j in range(n):
-                d1 = np.sqrt((data[query_index][j][0] - data[i][j][0]) ** 2)
-                d2 = np.sqrt((data[query_index][j][1] - data[i][j][1]) ** 2)
-                d3 = np.sqrt((data[query_index][j][2] - data[i][j][2]) ** 2)
-                dis = (d1 + d2 + d3) / 3.0
+                # 分割した領域ごとについて比較
+                for j in range(n):
+                    d1 = np.sqrt((data[query_index][j][0] - data[i][j][0]) ** 2)
+                    d2 = np.sqrt((data[query_index][j][1] - data[i][j][1]) ** 2)
+                    d3 = np.sqrt((data[query_index][j][2] - data[i][j][2]) ** 2)
+                    dis = (d1 + d2 + d3) / 3.0
 
-                region_sum.append(dis.sum())
+                    region_sum.append(dis.sum())
 
-            # 画像1枚についての類似度
-            image_sum = np.array(region_sum).sum() / n
-            similarity.append(image_sum)
-
+                # 画像1枚についての類似度
+                image_sum = np.array(region_sum).sum() / n
+                similarity.append(image_sum)
+        else:
+            # DCNNの時
+            pass
     # INTERSECTIONで比較する場合
     elif feature in FEATURES_NAME_INTERSEC:
-        # データセットの一枚ごとについて比較
-        for i in range(len(images_list)):
-            # 画像を分割した領域ごとの類似度
-            region_sum = []
+        if feature != "19":
+            # データセットの一枚ごとについて比較
+            for i in range(len(images_list)):
+                # 画像を分割した領域ごとの類似度
+                region_sum = []
 
-            # 分割した領域ごとについて比較
-            for j in range(n):
-                s1 = np.minimum(data[query_index][j][0], data[i][j][0])
-                s2 = np.minimum(data[query_index][j][1], data[i][j][1])
-                s3 = np.minimum(data[query_index][j][2], data[i][j][2])
-                sim = (s1 + s2 + s3) / 3.0
+                # 分割した領域ごとについて比較
+                for j in range(n):
+                    s1 = np.minimum(data[query_index][j][0], data[i][j][0])
+                    s2 = np.minimum(data[query_index][j][1], data[i][j][1])
+                    s3 = np.minimum(data[query_index][j][2], data[i][j][2])
+                    sim = (s1 + s2 + s3) / 3.0
 
-                region_sum.append(sim.sum())
+                    region_sum.append(sim.sum())
 
-            # 画像1枚についての類似度
-            image_sum = np.array(region_sum).sum() / n
-            similarity.append(image_sum)
+                # 画像1枚についての類似度
+                image_sum = np.array(region_sum).sum() / n
+                similarity.append(image_sum)
+        else:
+            # DCNNの時
+            pass
     return similarity
 
 
