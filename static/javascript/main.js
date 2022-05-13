@@ -17,5 +17,5 @@ function getUrlQueries() {
 // クエリ情報を吐き出す
 function activateFeatureOption() {
     let queries = getUrlQueries()
-    console.log(queries)
+    console.log(queries["f"])
 }
