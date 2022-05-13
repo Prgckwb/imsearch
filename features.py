@@ -49,6 +49,7 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
 def extract_dcnn_hist(img_path, transform, model):
     img = Image.open(img_path)
     img = transform(img).unsqueeze(0)
+    img = img.to('cuda')
     output = model(img)
 
     return output
@@ -78,7 +79,6 @@ def write_dcnn_data():
 
     with open("static/data/dcnn_feature.txt", "a") as f:
         for i, image in enumerate(tqdm(images_path_list)):
-            image = image.to('cuda')
             data = extract_dcnn_hist(image, transform, model)
             data = data.to('cpu').detach().numpy().copy()
             f.write(str(data))
