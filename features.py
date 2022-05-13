@@ -2,12 +2,10 @@
 # 事前に使うだけで実際のCGIプログラムには関係しない
 
 import glob
-from pathlib import Path
 
 import cv2
 import numpy as np
 from PIL import Image
-from torch.utils.data import Dataset, DataLoader
 from torchvision import models, transforms
 from tqdm import tqdm
 
@@ -47,24 +45,6 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
     return hist
 
 
-class ImageFolder(Dataset):
-    def __init__(self, img_dir: str, transform=None):
-        self.transform = transform
-        img_dir = Path(img_dir)
-        self.img_paths = [p for p in img_dir.iterdir()]
-
-    def __getitem__(self, index):
-        path = self.img_paths[index]
-        img = Image.open(path)
-        if self.transform is not None:
-            img = self.transform(img)
-
-        return img
-
-    def __len__(self):
-        return len(self.img_paths)
-
-
 def extract_dcnn_hist(img_path):
     model = models.vgg16(pretrained=True)
     model.eval()
@@ -81,16 +61,11 @@ def extract_dcnn_hist(img_path):
         normalize
     ])
 
-    dataset = ImageFolder("static/images", transforms)
-    dataloader = DataLoader(dataset)
-
-    for image in dataloader:
-        print(image.shape)
-
-    # img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
-    # img = Image.open(img_path)
-    # img_tensor = preprocess(img)
-    # img_tensor.unsqeeze_(0)
+    for path in images_path_list:
+        img = Image.open(path)
+        img_tensor = preprocess(img)
+        img_tensor.unsqeeze_(0)
+        print(img_tensor.shape)
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
