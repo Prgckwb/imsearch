@@ -25,7 +25,7 @@ function activateFeatureOption() {
         let default_feature = document.getElementById("10")
         default_feature.classList.add("is-active")
     } else {
-        let feature_option = document.getElementById(query_f)
+        let feature_option = document.getElementById(queries['f'])
         feature_option.classList.add("is-active")
     }
 
