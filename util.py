@@ -123,6 +123,7 @@ def compare_hist(data, query_index, feature, images_list):
                 similarity.append(image_sum)
         else:
             # DCNNの時
+            # TODO: L2正規化
             for i in range(len(images_list)):
                 d = np.sqrt((data[query_index][0] - data[i][0])**2)
                 similarity.append(d.sum())
@@ -149,7 +150,9 @@ def compare_hist(data, query_index, feature, images_list):
                 similarity.append(image_sum)
         else:
             # DCNNの時
-            pass
+            for i in range(len(images_list)):
+                s = np.minimum(data[query_index][0], data[i][0])
+                similarity.append(s.sum())
     return similarity
 
 
