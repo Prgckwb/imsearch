@@ -122,17 +122,21 @@ def compare_hist2(data, query_index, images_list, feature="10"):
     # 画像を何分割したデータであるか
     n = data.shape[1]
 
-    # データセットの一枚ごとについて比較
+    # EUCLIDで比較する場合
     if feature in FEATURES_NAME_EUCLID:
+        # データセットの一枚ごとについて比較
         for i in range(len(images_list)):
             # 画像を分割した領域ごとの類似度
             region_sum = []
 
             # 分割した領域ごとについて比較
             for j in range(n):
-                d1 = np.sqrt((data[query_index][j][0] - data[i][j][0]) ** 2)
-                d2 = np.sqrt((data[query_index][j][1] - data[i][j][1]) ** 2)
-                d3 = np.sqrt((data[query_index][j][2] - data[i][j][2]) ** 2)
+                d1 = data[query_index][j][0] - data[i][j][0]
+                d1 = np.sqrt(d1**2) / d1
+                d2 = data[query_index][j][1] - data[i][j][1]
+                d2 = np.sqrt(d2**2) / d2
+                d3 = data[query_index][j][2] - data[i][j][2]
+                d3 = np.sqrt(d3**2) / d3
                 sim = (d1 + d2 + d3) / 3.0
 
                 region_sum.append(sim.sum())
@@ -141,7 +145,9 @@ def compare_hist2(data, query_index, images_list, feature="10"):
             image_sum = np.array(region_sum).sum() / n
             similarity.append(image_sum)
 
+    # INTERSECTIONで比較する場合
     elif feature in FEATURES_NAME_INTERSEC:
+        # データセットの一枚ごとについて比較
         for i in range(len(images_list)):
             # 画像を分割した領域ごとの類似度
             region_sum = []
