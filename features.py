@@ -5,7 +5,7 @@ import glob
 
 import cv2
 import numpy as np
-import torch
+import torch.nn as nn
 from PIL import Image
 from torchvision import models, transforms
 from tqdm import tqdm
@@ -76,7 +76,6 @@ def extract_dcnn_hist(img_path):
     print(out.shape)
 
 
-
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
 def write_alldata(data_type, split_n=1, data_dir="static/data"):
     all_data = []
@@ -119,5 +118,14 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    path = "static/images/2192.jpg"
-    extract_dcnn_hist(path)
+    # path = "static/images/2192.jpg"
+    # extract_dcnn_hist(path)
+    model = models.vgg16(pretrained=True)
+    print(model)
+
+    print("~~~~~~~~~~~~~~~~~~~~~")
+    model = nn.Sequential(
+        *list(model.children())[:-1],
+        *list(model.children())[-1][:-1]
+    )
+    print(model)
