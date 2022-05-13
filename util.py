@@ -125,7 +125,7 @@ def compare_hist(data, query_index, feature, images_list):
             # DCNNの時
             # TODO: L2正規化
             for i in range(len(images_list)):
-                d = np.sqrt((data[query_index][0] - data[i][0])**2)
+                d = np.sqrt((data[query_index][0] - data[i][0]) ** 2)
                 similarity.append(d.sum())
 
     # INTERSECTIONで比較する場合
@@ -152,9 +152,8 @@ def compare_hist(data, query_index, feature, images_list):
             # DCNNの時
             for i in range(len(images_list)):
                 s = np.minimum(data[query_index][0], data[i][0])
-                s_l2_norm = np.sum(s**2)**0.5
-                s_normal = s / s_l2_norm
-                similarity.append(s_normal)
+                s = s / s.sum()
+                similarity.append(s.sum())
     return similarity
 
 
