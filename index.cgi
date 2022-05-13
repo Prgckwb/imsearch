@@ -11,7 +11,7 @@ form = cgi.FieldStorage()
 images_list = init_images()
 query_index, feature = get_queries(form)
 
-sorted_list = sortedlist_by_feature(query_index, feature, images_list)
+sorted_list = sort_list(query_index, feature, images_list)
 
 # ページの出力
 # ヘッダーには文末に改行が必要

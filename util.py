@@ -106,22 +106,9 @@ def compare_hist(data, query_index, images_list):
     return similarity
 
 
-def sort_list(sim, target_list):
-    zip_list = zip(sim, target_list)
-    zip_sort = sorted(zip_list, reverse=True)
-    sim, target_list = zip(*zip_sort)
-
-    for i in range(len(target_list)):
-        target_list[i].similarity = sim[i]
-
-    return target_list
-
-
-def sortedlist_by_feature(query_index, feature, images_list):
+def sort_list(query_index, feature, images_list):
     data = np.load(FEATURES_DATA_PATH[feature])
     similarity = compare_hist(data, query_index, images_list)
-    # sorted_list = sort_list(similarity, images_list)
-    # return sorted_list
 
     zip_list = zip(similarity, images_list)
     zip_sort = sorted(zip_list, reverse=True)
