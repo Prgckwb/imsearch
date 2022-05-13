@@ -48,32 +48,29 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
 
 def extract_dcnn_hist(img_path):
     model = models.vgg16(pretrained=True)
+
+    # 最終層を取り除く
+    layers = list(model.classifier.children())[:-2]
+    model.classifier = nn.Sequential(*layers)
+
+    # 推論モードへ
     model.eval()
 
-    normalize = transforms.Normalize(
-        mean=[0.485, 0.456, 0.406],
-        std=[0.229, 0.224, 0.225]
-    )
-
-    preprocess = transforms.Compose([
+    transform = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
-        normalize
+        transforms.Normalize(
+            mean=[0.485, 0.456, 0.406],
+            std=[0.229, 0.224, 0.225],
+        )
     ])
 
-    # for path in images_path_list:
-    #     img = Image.open(path)
-    #     img_tensor: torch.Tensor = preprocess(img)
-    #     img_tensor = img_tensor.unsqueeze(0)
-    #     print(img_tensor.shape)
-    path = images_path_list[0]
-    img = Image.open(path)
-    img = preprocess(img)
-    img = img.unsqueeze(0)
-    print(img.shape)
-    out = model(img)
-    print(out.shape)
+    img = Image.open(img_path)
+    img = transform(img).unsqueeze(0)
+    output = model(img)
+
+    return output
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
@@ -119,25 +116,5 @@ def split_image(img, n):
 
 if __name__ == '__main__':
     path = "static/images/2192.jpg"
-    # extract_dcnn_hist(path)
-    model = models.vgg16(pretrained=True)
-    layers = list(model.classifier.children())[:-2]
-    model.classifier = nn.Sequential(*layers)
-    img = Image.open(path)
-    normalize = transforms.Normalize(
-        mean=[0.485, 0.456, 0.406],
-        std=[0.229, 0.224, 0.225]
-    )
-
-    preprocess = transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
-        transforms.ToTensor(),
-        normalize
-    ])
-
-    model.eval()
-    img = preprocess(img)
-    img = img.unsqueeze(0)
-    out = model(img)
-    print(out.shape)
+    a = extract_dcnn_hist(path)
+    print(a.shape)
