@@ -152,8 +152,7 @@ def compare_hist(data, query_index, feature, images_list):
             # DCNNの時
             for i in range(len(images_list)):
                 s = np.minimum(data[query_index][0], data[i][0])
-                s = s / np.sum(s)
-                similarity.append(s[i])
+                similarity.append(s.sum())
     return similarity
 
 
