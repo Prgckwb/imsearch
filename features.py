@@ -64,6 +64,8 @@ def write_dcnn_data():
     # 推論モードへ
     model.eval()
 
+    model = model.to('cuda')
+
     transform = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
@@ -76,7 +78,9 @@ def write_dcnn_data():
 
     with open("static/data/dcnn_feature.txt", "a") as f:
         for i, image in enumerate(tqdm(images_path_list)):
+            image = image.to('cuda')
             data = extract_dcnn_hist(image, transform, model)
+            data = data.to('cpu').detach().numpy().copy()
             f.write(str(data))
 
 
