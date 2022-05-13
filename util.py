@@ -80,7 +80,7 @@ def get_queries(form):
 
 
 # 2つのヒストグラムの類似度をIntersectionで比較
-def compare_hist(data, query_index, images_list):
+def compare_hist(data, query_index, images_list, compare_type="intersec"):
     similarity = []
 
     # 画像を何分割したデータであるか
@@ -106,9 +106,55 @@ def compare_hist(data, query_index, images_list):
     return similarity
 
 
+def compare_hist2(data, query_index, images_list, feature="10"):
+    similarity = []
+
+    # 画像を何分割したデータであるか
+    n = data.shape[1]
+
+    # データセットの一枚ごとについて比較
+    if feature in FEATURES_NAME_EUCLID:
+        for i in range(len(images_list)):
+            # 画像を分割した領域ごとの類似度
+            region_sum = []
+
+            # 分割した領域ごとについて比較
+            for j in range(n):
+                d1 = np.sqrt((data[query_index][j][0] - data[i][j][0]) ** 2)
+                d2 = np.sqrt((data[query_index][j][1] - data[i][j][1]) ** 2)
+                d3 = np.sqrt((data[query_index][j][2] - data[i][j][2]) ** 2)
+                sim = (d1 + d2 + d3) / 3.0
+
+                region_sum.append(sim.sum())
+
+            # 画像1枚についての類似度
+            image_sum = np.array(region_sum).sum() / n
+            similarity.append(image_sum)
+
+    elif feature in FEATURES_NAME_INTERSEC:
+        for i in range(len(images_list)):
+            # 画像を分割した領域ごとの類似度
+            region_sum = []
+
+            # 分割した領域ごとについて比較
+            for j in range(n):
+                s1 = np.minimum(data[query_index][j][0], data[i][j][0])
+                s2 = np.minimum(data[query_index][j][1], data[i][j][1])
+                s3 = np.minimum(data[query_index][j][2], data[i][j][2])
+                sim = (s1 + s2 + s3) / 3.0
+
+                region_sum.append(sim.sum())
+
+            # 画像1枚についての類似度
+            image_sum = np.array(region_sum).sum() / n
+            similarity.append(image_sum)
+    return similarity
+
+
 def sort_list(query_index, feature, images_list):
     data = np.load(FEATURES_DATA_PATH[feature])
-    similarity = compare_hist(data, query_index, images_list)
+    # similarity = compare_hist(data, query_index, images_list)
+    similarity = compare_hist2(data, query_index, images_list, feature)
 
     zip_list = zip(similarity, images_list)
     zip_sort = sorted(zip_list, reverse=True)
