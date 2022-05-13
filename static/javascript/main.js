@@ -17,7 +17,6 @@ function getUrlQueries() {
 // クエリ情報を吐き出す
 function activateFeatureOption() {
     let queries = getUrlQueries()
-    console.log(queries.f)
-    console.log("aiueo")
-    console.log(queries.i)
+    let feature_option = document.getElementById(queries['f'])
+    feature_option.classList.add("is_active")
 }
