@@ -167,7 +167,13 @@ def sort_list(query_index, feature, images_list):
     similarity = compare_hist2(data, query_index, images_list, feature)
 
     zip_list = zip(similarity, images_list)
-    zip_sort = sorted(zip_list, reverse=True)
+
+    zip_sort = None
+    if feature in FEATURES_NAME_EUCLID:
+        zip_sort = sorted(zip_list, reverse=False)
+    elif feature in FEATURES_NAME_INTERSEC:
+        zip_sort = sorted(zip_list, reverse=True)
+
     similarity, images_list = zip(*zip_sort)
 
     for i in range(len(images_list)):
