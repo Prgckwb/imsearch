@@ -71,7 +71,7 @@ def extract_dcnn_hist(img_path):
     img = Image.open(path)
     img = preprocess(img)
     img = img.unsqueeze(0)
-    print(img)
+    print(img.shape)
 
 
 
