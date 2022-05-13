@@ -5,6 +5,7 @@ import glob
 
 import cv2
 import numpy as np
+from PIL import Image
 from torchvision import models, transforms
 from tqdm import tqdm
 
@@ -60,11 +61,10 @@ def extract_dcnn_hist(img_path):
         normalize
     ])
 
-    img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
+    # img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
+    img = Image.open(img_path)
     img_tensor = preprocess(img)
     print(img_tensor.shape)
-
-
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
