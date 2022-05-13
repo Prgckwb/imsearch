@@ -5,6 +5,7 @@ import glob
 
 import cv2
 import numpy as np
+import torch
 from PIL import Image
 from torchvision import models, transforms
 from tqdm import tqdm
@@ -63,8 +64,8 @@ def extract_dcnn_hist(img_path):
 
     for path in images_path_list:
         img = Image.open(path)
-        img_tensor = preprocess(img)
-        img_tensor.unsqeeze_(0)
+        img_tensor: torch.Tensor = preprocess(img)
+        img_tensor = img_tensor.unsqueeze(0)
         print(img_tensor.shape)
 
 
