@@ -55,7 +55,7 @@ def extract_dcnn_hist(img_path, transform, model):
     return output
 
 
-def write_dcnn_data():
+def write_dcnn_data( data_dir="static/data"):
     model = models.vgg16(pretrained=True)
 
     # 最終層を取り除く
@@ -83,7 +83,9 @@ def write_dcnn_data():
         data = data.to('cpu').detach().numpy().copy()
         all_data.append(data)
 
-    return all_data
+    all_data = np.array(all_data)
+    print(all_data.shape)
+    np.save(f"{data_dir}/DCNN", all_data)
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
