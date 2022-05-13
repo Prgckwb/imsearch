@@ -5,6 +5,7 @@ import glob
 
 import cv2
 import numpy as np
+from torchvision import models, transforms
 from tqdm import tqdm
 
 from util import IMAGE_DIR
@@ -41,6 +42,29 @@ def extract_hist(img_path, hist_type="RGB", split_n=1):
         hist.append(h)
 
     return hist
+
+
+def extract_dcnn_hist(img_path):
+    model = models.vgg16(pretrained=True)
+    model.eval()
+
+    normalize = transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+
+    preprocess = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        normalize
+    ])
+
+    img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
+    img_tensor = preprocess(img)
+    print(img_tensor.shape)
+
+
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
@@ -85,4 +109,5 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    create_features_data()
+    path = "static/images/2192.jpg"
+    extract_dcnn_hist(path)
