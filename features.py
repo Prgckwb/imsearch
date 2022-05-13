@@ -130,5 +130,4 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    a = write_dcnn_data()
-    print(len(a))
+    write_dcnn_data()
