@@ -77,11 +77,13 @@ def write_dcnn_data():
         )
     ])
 
-    with open("static/data/dcnn_feature.txt", "a") as f:
-        for i, image in enumerate(tqdm(images_path_list)):
-            data = extract_dcnn_hist(image, transform, model)
-            data = data.to('cpu').detach().numpy().copy()
-            f.write(str(data))
+    all_data = []
+    for i, image in enumerate(tqdm(images_path_list)):
+        data = extract_dcnn_hist(image, transform, model)
+        data = data.to('cpu').detach().numpy().copy()
+        all_data.append(data)
+
+    return all_data
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
@@ -126,6 +128,5 @@ def split_image(img, n):
 
 
 if __name__ == '__main__':
-    # write_dcnn_data()
-    a = np.loadtxt("static/data/dcnn_feature.txt")
-    print(a.shape)
+    a = write_dcnn_data()
+    print(len(a))
