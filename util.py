@@ -118,33 +118,19 @@ def sort_list(sim, target_list):
 
 
 def sortedlist_by_feature(query_index, feature, images_list):
-    # if feature == "10":
-    #     data = np.load("static/data/RGB1.npy")
-    # elif feature == "11":
-    #     data = np.load("static/data/RGB2.npy")
-    # elif feature == "12":
-    #     data = np.load("static/data/RGB3.npy")
-    # elif feature == "13":
-    #     data = np.load("static/data/HSV1.npy")
-    # elif feature == "14":
-    #     data = np.load("static/data/HSV2.npy")
-    # elif feature == "15":
-    #     data = np.load("static/data/HSV3.npy")
-    # elif feature == "16":
-    #     data = np.load("static/data/LUV1.npy")
-    # elif feature == "17":
-    #     data = np.load("static/data/LUV2.npy")
-    # elif feature == "18":
-    #     data = np.load("static/data/LUV3.npy")
-    # elif feature == "19":
-    #     pass
-    # else:
-    #     pass
-
     data = np.load(FEATURES_DATA_PATH[feature])
     similarity = compare_hist(data, query_index, images_list)
-    sorted_list = sort_list(similarity, images_list)
-    return sorted_list
+    # sorted_list = sort_list(similarity, images_list)
+    # return sorted_list
+
+    zip_list = zip(similarity, images_list)
+    zip_sort = sorted(zip_list, reverse=True)
+    similarity, images_list = zip(*zip_sort)
+
+    for i in range(len(images_list)):
+        images_list[i].similarity = similarity[i]
+
+    return images_list
 
 
 if __name__ == '__main__':
