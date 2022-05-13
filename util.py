@@ -131,9 +131,9 @@ def compare_hist2(data, query_index, images_list, feature="10"):
 
             # 分割した領域ごとについて比較
             for j in range(n):
-                d1 = np.sqrt(np.sum(data[query_index][j][0] - data[i][j][0])**2)
-                d2 = np.sqrt(np.sum(data[query_index][j][1] - data[i][j][1])**2)
-                d3 = np.sqrt(np.sum(data[query_index][j][2] - data[i][j][2])**2)
+                d1 = np.sqrt((data[query_index][j][0] - data[i][j][0])**2)
+                d2 = np.sqrt((data[query_index][j][1] - data[i][j][1])**2)
+                d3 = np.sqrt((data[query_index][j][2] - data[i][j][2])**2)
                 sim = (d1 + d2 + d3) / 3.0
 
                 region_sum.append(sim.sum())
