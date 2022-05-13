@@ -125,8 +125,8 @@ def compare_hist(data, query_index, feature, images_list):
             # DCNNの時
             for i in range(len(images_list)):
                 d = data[query_index][0] - data[i][0]
-                d = d / np.sqrt(d**2)
-                similarity.append(d.sum())
+                d = np.sqrt((np.sum(d))**2)
+                similarity.append(d)
 
     # INTERSECTIONで比較する場合
     elif feature in FEATURES_NAME_INTERSEC:
