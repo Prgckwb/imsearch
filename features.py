@@ -62,11 +62,17 @@ def extract_dcnn_hist(img_path):
         normalize
     ])
 
-    for path in images_path_list:
-        img = Image.open(path)
-        img_tensor: torch.Tensor = preprocess(img)
-        img_tensor = img_tensor.unsqueeze(0)
-        print(img_tensor.shape)
+    # for path in images_path_list:
+    #     img = Image.open(path)
+    #     img_tensor: torch.Tensor = preprocess(img)
+    #     img_tensor = img_tensor.unsqueeze(0)
+    #     print(img_tensor.shape)
+    path = images_path_list[0]
+    img = Image.open(path)
+    img = preprocess(img)
+    img = img.unsqueeze(0)
+    print(img)
+
 
 
 # 特徴抽出methodを定義して全画像リストに対して特徴抽出
