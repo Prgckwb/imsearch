@@ -58,6 +58,7 @@ FEATURES_DATA_PATH = {
 }
 
 
+# 表示される画像についてデータクラスとして保持
 @dataclass
 class Image:
     path: str
@@ -68,6 +69,7 @@ class Image:
         return self.index < other.index
 
 
+# 使用する画像リストを初期化
 def init_images():
     imgs_list = []
     path_list = sorted(glob.glob(f"{IMAGE_DIR}/*.jpg"))
@@ -77,6 +79,7 @@ def init_images():
     return imgs_list
 
 
+# ページからクエリ情報を取得する
 def get_queries(form):
     query_index = 0
     feature = "10"
@@ -89,6 +92,7 @@ def get_queries(form):
     return query_index, feature
 
 
+# ヒストグラムをfeatureの手法で比較する
 def compare_hist(data, query_index, feature, images_list):
     similarity = []
 
