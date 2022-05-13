@@ -5,6 +5,7 @@ import glob
 
 import cv2
 import numpy as np
+import torch.cuda
 import torch.nn as nn
 from PIL import Image
 from torchvision import models, transforms
